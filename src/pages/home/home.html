@@ -1,12 +1,16 @@
 <ion-header>
   <ion-navbar>
-      <ion-buttons end>
+      <ion-buttons end
+        (click)="perfil()"
+      >
           <button ion-button icon-only>
             <ion-icon name="contact" color="secondary"></ion-icon>
           </button>
         </ion-buttons>
 
-      <ion-buttons end>
+      <ion-buttons end
+         (click)="notificacion()"
+      >
           <button ion-button icon-only>
             <ion-icon name="notifications" color="secondary"></ion-icon>
             <ion-badge item-end color="danger">10</ion-badge>
@@ -18,57 +22,25 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
+
+
+    <ion-card *ngFor="let news of _news.noticias; let i of index"
+      (click)="MostrarNoticias(i)"
+    >
         <img height="150" src="assets/imgs/flag.png"/>
         <ion-card-content>
           <ion-card-title>
-              Nuevos equipos
+                {{news.title}}
             </ion-card-title>
           <p>
-             capturan a 100 criminales buscados por la policia
+            {{ news.body }}
           </p>
 
           <ion-item>
               <ion-badge item-end>Seguir leyendo</ion-badge>
+              <ion-badge item-start>Seguir leyendo</ion-badge>
           </ion-item>
         </ion-card-content>
       </ion-card>
-
-
-      <ion-card>
-          <img height="150" src="assets/imgs/flag.png"/>
-          <ion-card-content>
-            <ion-card-title>
-                Nuevos equipos
-              </ion-card-title>
-            <p>
-               capturan a 100 criminales buscados por la policia
-            </p>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card>
-            <img height="150" src="assets/imgs/flag.png"/>
-            <ion-card-content>
-              <ion-card-title>
-                  Nuevos equipos
-                </ion-card-title>
-              <p>
-                 capturan a 100 criminales buscados por la policia
-              </p>
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card>
-              <img height="150" src="assets/imgs/flag.png"/>
-              <ion-card-content>
-                <ion-card-title>
-                    Nuevos equipos
-                  </ion-card-title>
-                <p>
-                   capturan a 100 criminales buscados por la policia
-                </p>
-              </ion-card-content>
-            </ion-card>
 
 </ion-content>

@@ -1,13 +1,17 @@
 <ion-header>
 
   <ion-navbar>
-      <ion-buttons end>
+      <ion-buttons end
+       (click)="perfil()"
+      >
           <button ion-button icon-only>
             <ion-icon name="contact" color="secondary"></ion-icon>
           </button>
         </ion-buttons>
 
-        <ion-buttons end>
+        <ion-buttons end
+           (click)="notificacion()"
+        >
             <button ion-button icon-only>
               <ion-icon name="notifications" color="secondary"></ion-icon>
               <ion-badge item-end color="danger">10</ion-badge>

@@ -1,13 +1,15 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar
+     color="barra"
+  >
 
       <ion-buttons end
         (click)="perfil()"
       >
           <button ion-button icon-only
           >
-            <ion-icon name="contact" color="secondary"></ion-icon>
+            <ion-icon name="contact" color="fondo"></ion-icon>
           </button>
         </ion-buttons>
 
@@ -15,7 +17,7 @@
              (click)="notificacion()"
         >
             <button ion-button icon-only>
-              <ion-icon name="notifications" color="secondary"></ion-icon>
+              <ion-icon name="notifications" color="fondo"></ion-icon>
               <ion-badge item-end color="danger">10</ion-badge>
             </button>
           </ion-buttons>
@@ -30,16 +32,20 @@
         <ion-grid>
             <ion-row>
                 <ion-col> 
-                    <ion-card>
+                    <ion-card
+                      (click)="log()"
+                    >
                         <img src="assets/imgs/history.png"/>
                         <div class="card-title">Historial</div>
                     </ion-card>
                 </ion-col>
           
                 <ion-col >
-                    <ion-card>
+                    <ion-card
+                       (click)="local()"
+                    >
                         <img src="assets/imgs/subir.png"/>
-                        <div class="card-title">Placa</div>
+                        <div class="card-title">Local</div>
                     </ion-card>
                 </ion-col>
               </ion-row>
@@ -47,9 +53,11 @@
 
               <ion-row>
                   <ion-col> 
-                      <ion-card>
+                      <ion-card
+                         (click)="apoyo()"
+                      >
                           <img src="assets/imgs/apoyo.png"/>
-                          <div class="card-title">Historial</div>
+                          <div class="card-title">Apoyo</div>
                       </ion-card>
                   </ion-col>
             

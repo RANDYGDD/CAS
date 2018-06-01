@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar
+      color="barra"
+  >
+    <ion-title>Buscados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    (ionInput)="onInput($event)"
+    >
+  </ion-searchbar>
+
+    <ion-list>
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="http://via.placeholder.com/350x150">
+          </ion-thumbnail>
+          <h2>My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988</p>
+          <button ion-button clear item-end
+            (click)="detalle()"
+          >Ver</button>
+        </ion-item>
+      </ion-list>
+
+</ion-content>

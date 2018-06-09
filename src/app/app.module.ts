@@ -11,20 +11,31 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//Firebase///
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConf } from './../config/firebase.config';
+
 
 //Provider Nativos//
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { Toast } from '@ionic-native/toast';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Network } from '@ionic-native/network';
+import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 //Providers////
 import { NoticiasProvider } from '../providers/noticias/noticias';
 import { ConsultalProvider } from '../providers/consultal/consultal';
 import { HuellasProvider } from '../providers/huellas/huellas';
 import { RedesProvider } from '../providers/redes/redes';
+import { UsuarioProvider } from '../providers/usuario/usuario';
+import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
 
 
+///Plugin mapas///
+import { AgmCoreModule } from '@agm/core';
 
   ////Pages///////
 import { HomePage } from '../pages/home/home';
@@ -44,6 +55,8 @@ import { BuscadosPage } from './../pages/buscados/buscados';
 import { BuscadoPage } from './../pages/buscado/buscado';
 import { LocalPage } from './../pages/local/local';
 import { LogsPage } from './../pages/logs/logs';
+import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
+
 
 @NgModule({
   declarations: [
@@ -64,14 +77,21 @@ import { LogsPage } from './../pages/logs/logs';
     BuscadosPage,
     BuscadoPage,
     LocalPage,
-    LogsPage
+    LogsPage,
+    MiUbicacionPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,  
     FormsModule,
     ReactiveFormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConf),
+    AngularFirestoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -92,7 +112,8 @@ import { LogsPage } from './../pages/logs/logs';
     BuscadosPage,
     BuscadoPage,
     LocalPage,
-    LogsPage
+    LogsPage,
+    MiUbicacionPage
   ],
   providers: [
     StatusBar,
@@ -105,7 +126,10 @@ import { LogsPage } from './../pages/logs/logs';
     HuellasProvider,
     BarcodeScanner,
     RedesProvider,
-    Network
+    Network,
+    Geolocation,
+    UsuarioProvider,
+    UbicacionProvider
   ]
 })
 export class AppModule {}

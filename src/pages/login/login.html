@@ -16,7 +16,9 @@
         <ion-list>
               <ion-item>
                 <ion-label stacked>Usuario</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input type="text"
+                   [(ngModel)]="clave"
+                ></ion-input>
               </ion-item>
             
               <ion-item>
@@ -27,7 +29,9 @@
       </ion-card-content>
     </ion-card>
 
-    <button ion-button color="danger" round block>Iniciar Sessión</button>  
+    <button ion-button color="danger" round block
+            (click)="ingresar()"
+    >Iniciar Sessión</button>  
 
   
 

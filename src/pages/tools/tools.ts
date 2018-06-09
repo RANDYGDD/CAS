@@ -1,3 +1,4 @@
+import { MiUbicacionPage } from './../mi-ubicacion/mi-ubicacion';
 import { LocalPage } from './../local/local';
 import { NotificacionesPage } from './../notificaciones/notificaciones';
 import { PerfilPage } from './../perfil/perfil';
@@ -68,6 +69,11 @@ apoyo(){
     });
     alert.present();
 
+}
+
+
+ubicacion(){
+     this.navCtrl.push(MiUbicacionPage);
 }
 
 

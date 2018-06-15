@@ -42,8 +42,9 @@ export class UbicacionProvider {
       });
 
       this.watch = this.geolocation.watchPosition()
+            .subscribe((data) =>{
 
-           .subscribe((data) =>{
+              console.log(data);
                
                 this.policia.update({
                   lat: data.coords.latitude,
@@ -55,6 +56,7 @@ export class UbicacionProvider {
                   altitudeAccuracy: data.coords.altitudeAccuracy,
                   time: data.timestamp.toString(),
                   clave: this.usuario.clave
+
             });
                     
               });
@@ -66,13 +68,13 @@ export class UbicacionProvider {
   }
 
   detenerUbicacion(){
-
-    try{
-      this.watch.unsubscribe();
-
-    }catch(e){
-      console.log(JSON.stringify(e));
-    }
+     
+       this.watch.unsubscribe();
   }
+
+
+ 
+  
+  
 
 }

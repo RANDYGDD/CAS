@@ -21,7 +21,7 @@
         </button>
       </ion-buttons>
 
-    <ion-title>Consultas</ion-title>
+    <ion-title>Incidentes</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -32,42 +32,36 @@
     <ion-grid>
     <ion-row>
       <ion-col> 
-          <ion-card  
-             [navPush]="consulta"
+          <ion-card
+             (click)="crimenes()"
           >
-              <img src="assets/imgs/perfil.png"/>
-              <div class="card-title">Perfiles</div>
+              <img src="assets/imgs/fingerprint.png"/>
+              <div class="card-title">Crimenes</div>
           </ion-card>
       </ion-col>
 
       <ion-col >
           <ion-card
-            (click)="showPrompt()"
+              (click)="accidente()"
           >
-              <img src="assets/imgs/placa.png"/>
-              <div class="card-title">Placa</div>
+              <img src="assets/imgs/accidente.png"/>
+              <div class="card-title">Accidente</div>
           </ion-card>
       </ion-col>
+
     </ion-row>
 
     <ion-row>
         <ion-col >
             <ion-card
-              [navPush]="buscados"
+               (click)="robo()"
             >
-                <img src="assets/imgs/buscados.png  "/>
-                <div class="card-title">Buscados</div>
+                <img src="assets/imgs/robo-vehiculo.png"/>
+                <div class="card-title">Robo Vehiculo</div>
             </ion-card>
         </ion-col>
 
         <ion-col>
-            <ion-card
-              (click)="graficos()"
-            >
-
-                <img src="assets/imgs/grafico.png"/>
-                <div class="card-title">Estadisticas</div>
-            </ion-card>
         </ion-col>
     </ion-row>
   </ion-grid>

@@ -22,6 +22,12 @@ export class LoginPage {
             ) {
   }
 
+  ngOnInit(){
+
+    
+
+  }
+
   LectorHuella(){
 
    this._huellas.LeerHuella()
@@ -58,7 +64,7 @@ private validarUsuario(clave:string){
             
             this.alertCtrl.create({
                title: 'Usuario Incorrecto',
-               subTitle: 'Hable con el administrador o prueve de nuevo',
+               subTitle: 'Hable con el administrador o intentes de nuevo',
                buttons: ['Aceptar']
              }).present();
              

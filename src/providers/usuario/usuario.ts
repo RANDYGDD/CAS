@@ -28,8 +28,6 @@ export class UsuarioProvider {
       
      this.doc= this.afDB.doc(`/usuarios/${ clave }`)
           .valueChanges().subscribe(data=>{
-               console.log(data);
-
                if(data){
                  //correcto
                  this.clave = clave;
@@ -41,8 +39,7 @@ export class UsuarioProvider {
                  resolve(false);
                  //incorrecto
                }
-          })
-             
+          }) 
     });
 
   }

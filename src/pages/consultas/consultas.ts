@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import { ConsultarPage } from './../consultar/consultar';
 import { AlertController } from 'ionic-angular';
-
+import { GraficosPage } from './../graficos/graficos';
 
 @Component({
   selector: 'page-consultas',
@@ -31,6 +31,12 @@ perfil() {
 
 notificacion(){
   this.modalCtrl.create(NotificacionesPage).present();
+}
+
+graficos(){
+
+  this.navCtrl.push(GraficosPage);
+
 }
 
 showPrompt() {

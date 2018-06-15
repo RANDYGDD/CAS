@@ -5,6 +5,7 @@ import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { LoginPage } from '../login/login';
 
 
+
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
@@ -27,6 +28,7 @@ export class PerfilPage {
 
   salir(){
     this.usuario.borrarUsuario();
+    this.ubicacion.detenerUbicacion();
     this.navCtrl.setRoot(LoginPage);
   }
 

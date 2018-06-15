@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 
 
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -25,6 +26,7 @@ import { Network } from '@ionic-native/network';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 
+
 //Providers////
 import { NoticiasProvider } from '../providers/noticias/noticias';
 import { ConsultalProvider } from '../providers/consultal/consultal';
@@ -36,6 +38,7 @@ import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
 
 ///Plugin mapas///
 import { AgmCoreModule } from '@agm/core';
+import { ChartsModule } from 'ng2-charts';
 
   ////Pages///////
 import { HomePage } from '../pages/home/home';
@@ -56,6 +59,13 @@ import { BuscadoPage } from './../pages/buscado/buscado';
 import { LocalPage } from './../pages/local/local';
 import { LogsPage } from './../pages/logs/logs';
 import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
+import { AyudaProvider } from '../providers/ayuda/ayuda';
+import { GraficosPage } from './../pages/graficos/graficos';
+import { IncidentesPage } from './../pages/incidentes/incidentes';
+import { RoboVehiculoPage } from '../pages/robo-vehiculo/robo-vehiculo';
+import { AccidentePage } from './../pages/accidente/accidente';
+
+
 
 
 @NgModule({
@@ -78,7 +88,12 @@ import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
     BuscadoPage,
     LocalPage,
     LogsPage,
-    MiUbicacionPage
+    MiUbicacionPage,
+    GraficosPage,
+    IncidentesPage,
+    RoboVehiculoPage,
+    AccidentePage
+    
   ],
   imports: [
     BrowserModule,
@@ -91,7 +106,8 @@ import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
     AngularFirestoreModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8'
-    })
+    }),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -113,7 +129,11 @@ import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
     BuscadoPage,
     LocalPage,
     LogsPage,
-    MiUbicacionPage
+    MiUbicacionPage,
+    GraficosPage,
+    IncidentesPage,
+    RoboVehiculoPage,
+    AccidentePage
   ],
   providers: [
     StatusBar,
@@ -129,7 +149,8 @@ import { MiUbicacionPage } from './../pages/mi-ubicacion/mi-ubicacion';
     Network,
     Geolocation,
     UsuarioProvider,
-    UbicacionProvider
+    UbicacionProvider,
+    AyudaProvider
   ]
 })
 export class AppModule {}

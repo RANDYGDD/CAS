@@ -1,26 +1,7 @@
 <ion-header>
 
-  <ion-navbar
-      color="barra"
-  >
-      <ion-buttons end
-       (click)="perfil()"
-      >
-          <button ion-button icon-only>
-            <ion-icon name="contact" color="fondo"></ion-icon>
-          </button>
-        </ion-buttons>
-
-        <ion-buttons end
-           (click)="notificacion()"
-        >
-            <button ion-button icon-only>
-              <ion-icon name="notifications" color="fondo"></ion-icon>
-              <ion-badge item-end color="danger">10</ion-badge>
-            </button>
-          </ion-buttons>
-
-    <ion-title>NotePad</ion-title>
+  <ion-navbar color="barra">
+    <ion-title>Crimenes</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -36,7 +17,6 @@
         <ion-label>Tipo Incidente</ion-label>
         <ion-select>
           <ion-option value="nes">Robo</ion-option>
-          <ion-option value="n64">Accidente</ion-option>
           <ion-option value="ps">Atraco</ion-option>
           <ion-option value="genesis">Hurto</ion-option>
         </ion-select>

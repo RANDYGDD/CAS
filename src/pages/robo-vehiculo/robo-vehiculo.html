@@ -1,8 +1,6 @@
 <ion-header>
 
-  <ion-navbar
-       color="barra"
-  >
+  <ion-navbar color="barra">
     <ion-title>Robo Vehiculo</ion-title>
   </ion-navbar>
 
@@ -10,5 +8,71 @@
 
 
 <ion-content padding>
+  <ion-list>
+      <ion-item>
+        <ion-label>Marca</ion-label>
+        <ion-select>
+          <ion-option value="nes">Toyota</ion-option>
+          <ion-option value="ps">Honda</ion-option>
+          <ion-option value="ps">Kia</ion-option>
+          <ion-option value="genesis">Hyundai</ion-option>
+          <ion-option value="genesis">Volvo</ion-option>
+          <ion-option value="genesis">BMW</ion-option>
+          <ion-option value="genesis">Mercedes</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Modelo</ion-label>
+            <ion-input type="text" value=""></ion-input>
+          </ion-item> 
+
+        <ion-item>
+          <ion-label fixed>Ubicación</ion-label>
+          <ion-input type="text" value=""></ion-input>
+        </ion-item>
+      
+      </ion-list>
+
+      <button ion-button block color="danger" round>Seleccionar Ubicación</button>
+
+  
+      <ion-grid>
+          <ion-row>
+            <ion-col >
+                <ion-item>
+                    <ion-label>Fecha</ion-label>
+                    <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+                  </ion-item>
+            </ion-col>
+
+          </ion-row>
+      
+        </ion-grid>
+
+
+
+      <ion-grid>
+          <ion-row>
+            <ion-col >
+                <ion-item>
+                <ion-label>Tiempo</ion-label>
+                <ion-datetime displayFormat="h:mm A" [(ngModel)]="myDate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      
+        </ion-grid>
+
+
+      <ion-list>
+        <ion-item>
+            <ion-textarea placeholder="Informacion adicional, detalles, testigos ect" rows="15"></ion-textarea>
+          </ion-item>
+        </ion-list>
+
+    <button ion-button block color="danger" round>Enviar</button>
 
 </ion-content>

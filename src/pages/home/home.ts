@@ -31,16 +31,20 @@ export class HomePage {
 
   Noticias(){
 
-    let loading = this.loadingCtrl.create({
-      content: 'Cargando....'
-    });
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Cargando....'
+    // });
 
-        loading.present();
+    //     loading.present();
 
-    this._news.CargarNoticias().then(()=>{
-        
-       loading.dismiss();
-    })
+    this._news.CargarNoticias()
+    .then(()=>{  
+      //  loading.dismiss();
+      
+      })
+      .catch(() => {
+      //  loading.dismiss();
+    });  
   }
 
   MostrarNoticias(news:any){

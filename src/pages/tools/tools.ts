@@ -4,8 +4,11 @@ import { LocalPage } from './../local/local';
 import { NotificacionesPage } from './../notificaciones/notificaciones';
 import { PerfilPage } from './../perfil/perfil';
 import { Component } from '@angular/core';
-import { NavController, NavParams,ModalController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LogsPage } from '../logs/logs';
+import { RedesProvider } from '../../providers/redes/redes';
+import { CallNumber } from '@ionic-native/call-number';
+
 
 
 @Component({
@@ -20,7 +23,11 @@ export class ToolsPage {
               public navParams: NavParams,
               public modalCtrl:ModalController,
               public alertCtrl:AlertController,
-              public ayuda:AyudaProvider
+              public ayuda:AyudaProvider,
+              private red:RedesProvider,
+              private callNumber: CallNumber,
+              private loadingCtrl:LoadingController,
+              private  toast:ToastController
             ) {
   }
 
@@ -66,10 +73,25 @@ apoyo(){
     alert.addButton({
       text: 'Solicitar Apoyo',
       handler: data => {
-        this.ayuda.PedirAyuda(data);
+         if(this.red.Status()=="none"){
+                  this.callNumber.callNumber("111111", true)
+                 .then(res => console.log('Launched dialer!', res))
+                .catch(err => console.log('Error launching dialer', err));
+
+                this.toast.create({
+                  message: this.red.Status(),
+                  showCloseButton:true
+                })
+         }else{
+                 this.ayuda.PedirAyuda(data);
+         }
       }
+
     });
+
     alert.present();
+
+
 
 }
 

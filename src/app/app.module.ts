@@ -25,6 +25,10 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Network } from '@ionic-native/network';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
+import { OneSignal } from '@ionic-native/onesignal';
+
+
 
 
 //Providers////
@@ -64,6 +68,7 @@ import { GraficosPage } from './../pages/graficos/graficos';
 import { IncidentesPage } from './../pages/incidentes/incidentes';
 import { RoboVehiculoPage } from '../pages/robo-vehiculo/robo-vehiculo';
 import { AccidentePage } from './../pages/accidente/accidente';
+import { PushNotificationsProvider } from '../providers/push-notifications/push-notifications';
 
 
 
@@ -150,7 +155,10 @@ import { AccidentePage } from './../pages/accidente/accidente';
     Geolocation,
     UsuarioProvider,
     UbicacionProvider,
-    AyudaProvider
+    AyudaProvider,
+    CallNumber,
+    OneSignal,
+    PushNotificationsProvider
   ]
 })
 export class AppModule {}

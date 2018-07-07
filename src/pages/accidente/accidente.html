@@ -1,14 +1,76 @@
 <ion-header>
 
-  <ion-navbar
-     color="barra"
-  >
-    <ion-title>Accidentes Transito</ion-title>
-  </ion-navbar>
+    <ion-navbar color="barra">
+      <ion-title>Accidente</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label stacked>Cantidad de heridos</ion-label>
+            <ion-input type="number" value=""></ion-input>
+        </ion-item> 
 
-</ion-header>
+          <ion-item>
+              <ion-label stacked>Cantidad de Vehiculos involucrados</ion-label>
+              <ion-input type="number" value=""></ion-input>
+            </ion-item>
 
+      </ion-list>
+  
+      <ion-list>
 
-<ion-content padding>
-
-</ion-content>
+          <ion-item>
+            <ion-label>Ubicación</ion-label>
+            <ion-input type="text" value=""></ion-input>
+          </ion-item>
+        
+        </ion-list>
+  
+        <button ion-button block color="danger" round>Seleccionar Ubicación</button>
+  
+    
+        <ion-grid>
+            <ion-row>
+              <ion-col >
+                  <ion-item>
+                      <ion-label>Fecha</ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+                    </ion-item>
+              </ion-col>
+  
+            </ion-row>
+        
+          </ion-grid>
+  
+  
+  
+        <ion-grid>
+            <ion-row>
+              <ion-col >
+                  <ion-item>
+                  <ion-label>Tiempo</ion-label>
+                  <ion-datetime displayFormat="h:mm A" [(ngModel)]="myDate"></ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+        
+          </ion-grid>
+  
+  
+        <ion-list>
+          <ion-item>
+              <ion-textarea placeholder="Informacion adicional, 
+              marca, modelo del vehiculo y 
+              categoria del vehiculo asi como tambien nombre o indetificación 
+              de los involucrados" rows="15"></ion-textarea>
+            </ion-item>
+          </ion-list>
+  
+      <button ion-button block color="danger" round>Enviar</button>
+  
+  </ion-content>
+  

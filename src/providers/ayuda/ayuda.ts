@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsuarioProvider } from './../usuario/usuario';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { UbicacionProvider } from '../ubicacion/ubicacion';
 
 @Injectable()
 export class AyudaProvider {
@@ -10,9 +9,8 @@ export class AyudaProvider {
   datos:any;
 
   constructor( public usuario:UsuarioProvider,
-               private afDB:AngularFirestore,
-               private ubicacion:UbicacionProvider
-              ) {
+               private afDB:AngularFirestore
+   ){
       this.policia = this.afDB.doc(`/ayuda/${this.usuario.clave}`);
   }
 
@@ -32,10 +30,10 @@ export class AyudaProvider {
       heading:data.heading,
       altitudeAccuracy: data.altitudeAccuracy,
       clave: this.usuario.clave
-     });
-     
-   });
+     });    
+
     
+  });
   }
 
   ObtenerData(){

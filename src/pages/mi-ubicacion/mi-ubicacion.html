@@ -2,8 +2,8 @@
   <ion-navbar color="barra">
     
     <ion-title>
-         {{user.nombre}}
-    </ion-title>
+        Mi Ubicación
+    </ion-title> 
   </ion-navbar>
 </ion-header>
 
@@ -16,8 +16,7 @@
     [iconUrl]="ImgUrl"
     >
   <agm-info-window>
-    <strong>Velocidad: {{user.speed}} M/S</strong> <br>
-    <strong>Exactitud: {{user.accuracy}} Metros</strong>
+    <strong>Exactitud: {{ user.exactitud }} Metros</strong>
 </agm-info-window>
   
   </agm-marker>

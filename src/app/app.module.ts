@@ -69,7 +69,8 @@ import { IncidentesPage } from './../pages/incidentes/incidentes';
 import { RoboVehiculoPage } from '../pages/robo-vehiculo/robo-vehiculo';
 import { AccidentePage } from './../pages/accidente/accidente';
 import { PushNotificationsProvider } from '../providers/push-notifications/push-notifications';
-
+import { GeneralPage } from './../pages/general/general';
+import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacion';
 
 
 
@@ -97,7 +98,9 @@ import { PushNotificationsProvider } from '../providers/push-notifications/push-
     GraficosPage,
     IncidentesPage,
     RoboVehiculoPage,
-    AccidentePage
+    AccidentePage,
+    GeneralPage,
+    SelectUbicacionPage
     
   ],
   imports: [
@@ -138,7 +141,9 @@ import { PushNotificationsProvider } from '../providers/push-notifications/push-
     GraficosPage,
     IncidentesPage,
     RoboVehiculoPage,
-    AccidentePage
+    AccidentePage,
+    GeneralPage,
+    SelectUbicacionPage
   ],
   providers: [
     StatusBar,

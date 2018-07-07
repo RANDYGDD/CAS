@@ -1,19 +1,19 @@
-import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
+import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
+
 
 @Component({
-  selector: 'page-robo-vehiculo',
-  templateUrl: 'robo-vehiculo.html',
+  selector: 'page-general',
+  templateUrl: 'general.html',
 })
+export class GeneralPage {
 
-export class RoboVehiculoPage {
 
-  public cordenadas;
-  
+  public cordenadas:any;
+
   constructor(public modalCtrl:ModalController) {
   }
-
 
 
   ubicacion(){
@@ -32,6 +32,5 @@ export class RoboVehiculoPage {
     })
  
    }
-
 
 }

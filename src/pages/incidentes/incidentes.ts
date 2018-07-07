@@ -1,3 +1,4 @@
+import { GeneralPage } from './../general/general';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RegistrarPage } from '../registrar/registrar';
@@ -12,12 +13,7 @@ export class IncidentesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IncidentesPage');
-  }
-
-
+  
   crimenes(){
       this.navCtrl.push(RegistrarPage);
   }
@@ -28,6 +24,12 @@ export class IncidentesPage {
 
   robo(){
     this.navCtrl.push(RoboVehiculoPage);
+  }
+
+  general(){
+
+    this.navCtrl.push(GeneralPage);
+
   }
 
 

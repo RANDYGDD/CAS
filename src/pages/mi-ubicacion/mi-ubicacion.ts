@@ -1,7 +1,6 @@
-import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
+import { NavController} from 'ionic-angular';
+import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 
 @Component({
   selector: 'page-mi-ubicacion',
@@ -10,21 +9,19 @@ import { NavController, NavParams } from 'ionic-angular';
 export class MiUbicacionPage {
 
   ImgUrl='assets/imgs/police_car.png';
-  lat: number;
-  lng: number;
+
+ public user:any={}
 
 
-  user:any={};
 
   constructor(public navCtrl: NavController,
               public ubicacion:UbicacionProvider,
   ) {
 
+  
+ 
+    this.user=ubicacion.obtenerUbicacion();
 
-    this.ubicacion.policia.valueChanges().subscribe(data=>{
-                    
-          this.user=data;
-    });
 
   }
 

@@ -55,7 +55,7 @@ export class HomePage {
 
 
 
-  perfil() {
+perfil() {
       this.modalCtrl.create(PerfilPage).present();
   }  
 

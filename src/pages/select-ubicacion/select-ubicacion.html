@@ -1,0 +1,50 @@
+<ion-header>
+
+    <ion-navbar
+       color="barra"
+    >
+
+       
+    <ion-buttons end
+    (click)="cerrar()"
+   >
+    <button ion-button>
+          Cerrar
+    </button>
+  </ion-buttons>
+
+  
+        <ion-buttons end
+          (click)="guardar()"
+        >
+          <button ion-button>
+              Guardar
+          </button>
+        </ion-buttons>
+  
+      <ion-title>Seleccionar Ubicación</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16"
+               (mapClick)="clickMapa($event)"
+      >
+        <agm-marker 
+        [latitude]="lat" 
+        [longitude]="lng"
+        [markerDraggable]="true"
+        (dragEnd)="dragEndMarcador($event)"
+        >
+      <agm-info-window>
+        <strong>Exactitud: {{user.accuracy}} Metros</strong>
+    </agm-info-window>
+      
+      </agm-marker>
+      </agm-map>
+       
+    </ion-content>
+  

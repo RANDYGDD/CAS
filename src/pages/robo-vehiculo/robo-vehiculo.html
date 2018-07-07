@@ -31,12 +31,18 @@
 
         <ion-item>
           <ion-label fixed>Ubicación</ion-label>
-          <ion-input type="text" value=""></ion-input>
+          <ion-input type="text" value=""
+                   [(ngModel)]="cordenadas"
+          ></ion-input>
         </ion-item>
       
       </ion-list>
 
-      <button ion-button block color="danger" round>Seleccionar Ubicación</button>
+      <button ion-button block color="danger" round
+      
+        (click)="ubicacion()"
+      
+      >Seleccionar Ubicación</button>
 
   
       <ion-grid>

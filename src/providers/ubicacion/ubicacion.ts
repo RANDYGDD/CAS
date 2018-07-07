@@ -12,6 +12,7 @@ export class UbicacionProvider {
 
   policia: AngularFirestoreDocument<any>;
   private watch: Subscription;
+  public user:any={}
 
   constructor(private geolocation:Geolocation,
               public usuario:UsuarioProvider,
@@ -32,8 +33,16 @@ export class UbicacionProvider {
   iniciarGeolocalizacion(){
 
     this.geolocation.getCurrentPosition().then((resp) => {
-      // resp.coords.latitude
-      // resp.coords.longitude
+     
+
+      this.user={
+        lat: resp.coords.latitude,
+        lng:resp.coords.longitude,
+        exactitud:resp.coords.accuracy
+      }
+     
+     
+     
 
       this.policia.update({
             lat: resp.coords.latitude,
@@ -43,6 +52,14 @@ export class UbicacionProvider {
 
       this.watch = this.geolocation.watchPosition()
             .subscribe((data) =>{
+
+              this.user={
+                lat: data.coords.latitude,
+                lng:data.coords.longitude,
+                exactitud:data.coords.accuracy
+              }
+
+
 
               console.log(data);
                
@@ -67,14 +84,22 @@ export class UbicacionProvider {
 
   }
 
+
+  
+
+  obtenerUbicacion(){
+
+    return this.user;
+
+  }
+
+
   detenerUbicacion(){
      
        this.watch.unsubscribe();
   }
 
 
- 
-  
   
 
 }

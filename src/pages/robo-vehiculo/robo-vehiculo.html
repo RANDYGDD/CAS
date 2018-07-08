@@ -10,31 +10,58 @@
 <ion-content padding>
   <ion-list>
       <ion-item>
-        <ion-label>Marca</ion-label>
-        <ion-select>
-          <ion-option value="nes">Toyota</ion-option>
-          <ion-option value="ps">Honda</ion-option>
-          <ion-option value="ps">Kia</ion-option>
-          <ion-option value="genesis">Hyundai</ion-option>
-          <ion-option value="genesis">Volvo</ion-option>
-          <ion-option value="genesis">BMW</ion-option>
-          <ion-option value="genesis">Mercedes</ion-option>
+        <ion-label>Marca *</ion-label>
+        <ion-select
+           [(ngModel)]="marca"
+        >
+          <ion-option value="Toyota">Toyota</ion-option>
+          <ion-option value="Honda">Honda</ion-option>
+          <ion-option value="Kia">Kia</ion-option>
+          <ion-option value="Hyundai">Hyundai</ion-option>
+          <ion-option value="Volvo">Volvo</ion-option>
+          <ion-option value="BMW">BMW</ion-option>
+          <ion-option value="Mercedes">Mercedes</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-list>
         <ion-item>
-            <ion-label fixed>Modelo</ion-label>
-            <ion-input type="text" value=""></ion-input>
+            <ion-label fixed>Modelo *</ion-label>
+            <ion-input type="text" value=""
+            [(ngModel)]="modelo"
+            ></ion-input>
           </ion-item> 
 
+          <ion-item>
+              <ion-label fixed>Año *</ion-label>
+              <ion-input type="text" value=""
+                       [(ngModel)]="year"
+              ></ion-input>
+          </ion-item>
+
+            <ion-item>
+                <ion-label fixed>Color *</ion-label>
+                <ion-input type="text" value=""
+                         [(ngModel)]="color"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label>Chasis</ion-label>
+                  <ion-input type="text" value=""
+                           [(ngModel)]="num_chasis"
+                  ></ion-input>
+                </ion-item>
+
         <ion-item>
-          <ion-label fixed>Ubicación</ion-label>
+          <ion-label fixed>Ubicación *</ion-label>
           <ion-input type="text" value=""
                    [(ngModel)]="cordenadas"
-          ></ion-input>
+          disabled></ion-input>
         </ion-item>
+
+      
       
       </ion-list>
 
@@ -49,8 +76,10 @@
           <ion-row>
             <ion-col >
                 <ion-item>
-                    <ion-label>Fecha</ion-label>
-                    <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+                    <ion-label>Fecha *</ion-label>
+                    <ion-datetime displayFormat="MM/DD/YYYY"  [max]="fecha" 
+                      [(ngModel)]="fecha"
+                    ></ion-datetime>
                   </ion-item>
             </ion-col>
 
@@ -64,8 +93,10 @@
           <ion-row>
             <ion-col >
                 <ion-item>
-                <ion-label>Tiempo</ion-label>
-                <ion-datetime displayFormat="h:mm A" [(ngModel)]="myDate"></ion-datetime>
+                <ion-label>Tiempo *</ion-label>
+                <ion-datetime displayFormat="h:mm A"
+                [(ngModel)]="tiempo"
+                ></ion-datetime>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -75,10 +106,14 @@
 
       <ion-list>
         <ion-item>
-            <ion-textarea placeholder="Informacion adicional, detalles, testigos ect" rows="15"></ion-textarea>
+            <ion-textarea placeholder="* Informacion adicional, detalles, testigos ect" rows="15"
+            [(ngModel)]="detalle"
+            ></ion-textarea>
           </ion-item>
         </ion-list>
 
-    <button ion-button block color="danger" round>Enviar</button>
+    <button ion-button block color="danger" round
+      (click)="enviar()"
+    >Enviar</button>
 
 </ion-content>

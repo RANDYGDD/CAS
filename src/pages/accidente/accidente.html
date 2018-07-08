@@ -10,13 +10,13 @@
   <ion-content padding>
     <ion-list>
         <ion-item>
-            <ion-label stacked>Cantidad de heridos</ion-label>
-            <ion-input type="number" value=""></ion-input>
+            <ion-label stacked>Cantidad de heridos*</ion-label>
+            <ion-input type="number" value="" [(ngModel)]="heridos" ></ion-input>
         </ion-item> 
 
           <ion-item>
-              <ion-label stacked>Cantidad de Vehiculos involucrados</ion-label>
-              <ion-input type="number" value=""></ion-input>
+              <ion-label stacked>Cantidad de Vehiculos involucrados*</ion-label>
+              <ion-input type="number" value="" [(ngModel)]="vehiculos" ></ion-input>
             </ion-item>
 
       </ion-list>
@@ -24,10 +24,10 @@
       <ion-list>
 
           <ion-item>
-            <ion-label>Ubicación</ion-label>
+            <ion-label>Ubicación*</ion-label>
             <ion-input type="text" value=""
             [(ngModel)]="cordenadas"
-            ></ion-input>
+            disabled></ion-input>
           </ion-item>
         
         </ion-list>
@@ -41,8 +41,8 @@
             <ion-row>
               <ion-col >
                   <ion-item>
-                      <ion-label>Fecha</ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+                      <ion-label>Fecha*</ion-label>
+                      <ion-datetime displayFormat="DD/MMM/YYYY" [max]="fecha" [(ngModel)]="fecha" ></ion-datetime>
                     </ion-item>
               </ion-col>
   
@@ -56,8 +56,8 @@
             <ion-row>
               <ion-col >
                   <ion-item>
-                  <ion-label>Tiempo</ion-label>
-                  <ion-datetime displayFormat="h:mm A" [(ngModel)]="myDate"></ion-datetime>
+                  <ion-label>Tiempo*</ion-label>
+                  <ion-datetime displayFormat="h:mm A" [(ngModel)]="tiempo"></ion-datetime>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -67,14 +67,16 @@
   
         <ion-list>
           <ion-item>
-              <ion-textarea placeholder="Informacion adicional, 
-              marca, modelo del vehiculo y 
-              categoria del vehiculo asi como tambien nombre o indetificación 
-              de los involucrados" rows="15"></ion-textarea>
+              <ion-textarea placeholder="*Informacion adicional, marca, modelo del vehiculo y categoria del vehiculo asi como tambien nombre o indetificación 
+              de los involucrados" rows="15"
+               [(ngModel)]="detalle"
+              ></ion-textarea>
             </ion-item>
           </ion-list>
   
-      <button ion-button block color="danger" round>Enviar</button>
+      <button ion-button block color="danger" round
+        (click)="enviar()"
+      >Enviar</button>
   
   </ion-content>
   

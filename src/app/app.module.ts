@@ -71,6 +71,7 @@ import { AccidentePage } from './../pages/accidente/accidente';
 import { PushNotificationsProvider } from '../providers/push-notifications/push-notifications';
 import { GeneralPage } from './../pages/general/general';
 import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacion';
+import { NotePadProvider } from '../providers/note-pad/note-pad';
 
 
 
@@ -163,7 +164,8 @@ import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacio
     AyudaProvider,
     CallNumber,
     OneSignal,
-    PushNotificationsProvider
+    PushNotificationsProvider,
+    NotePadProvider
   ]
 })
 export class AppModule {}

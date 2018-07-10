@@ -9,13 +9,13 @@ import { NotePadProvider } from '../../providers/note-pad/note-pad';
   templateUrl: 'registrar.html',
 })
 export class RegistrarPage {
-  public fecha: string;
+
 
   //Atributos
   public incidente:string="";
   public cordenadas: string="";
-  public date:string="";
   public tiempo:string="";
+  public fecha: string;
   public detalle:string="";
   public lat:string="";
   public lng:string="";
@@ -74,7 +74,7 @@ export class RegistrarPage {
 
 
     if(
-      this.incidente.length == 0 || this.cordenadas.length == 0 || this.date.length ==0 ||
+      this.incidente.length == 0 || this.cordenadas.length == 0 || this.fecha.length ==0 ||
       this.tiempo.length==0 || this.detalle.length == 0   
     ){
       this._notepad.campos();
@@ -87,14 +87,15 @@ export class RegistrarPage {
 
       this.crimen={
         incidente: this.incidente,
-        date: this.date,
+        fecha: this.fecha,
         tiempo:this.tiempo,
         detalle: this.detalle,
         lat:this.lat,
         lng: this.lng
       }
 
-     //this._notepad.guardar()
+     this._notepad.CargarStorage(); 
+     this._notepad.guardar("crimen",this.crimen);
 
      loading.dismiss();
     }
@@ -108,7 +109,7 @@ export class RegistrarPage {
 
 export interface crimen{
   incidente:string,
-  date:string,
+  fecha:string,
   tiempo:string,
   detalle:string;
   lat:string;

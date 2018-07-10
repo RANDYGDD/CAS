@@ -72,7 +72,7 @@ import { PushNotificationsProvider } from '../providers/push-notifications/push-
 import { GeneralPage } from './../pages/general/general';
 import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacion';
 import { NotePadProvider } from '../providers/note-pad/note-pad';
-
+import { NotasPage } from '../pages/notas/notas';
 
 
 @NgModule({
@@ -101,7 +101,8 @@ import { NotePadProvider } from '../providers/note-pad/note-pad';
     RoboVehiculoPage,
     AccidentePage,
     GeneralPage,
-    SelectUbicacionPage
+    SelectUbicacionPage,
+    NotasPage
     
   ],
   imports: [
@@ -144,7 +145,8 @@ import { NotePadProvider } from '../providers/note-pad/note-pad';
     RoboVehiculoPage,
     AccidentePage,
     GeneralPage,
-    SelectUbicacionPage
+    SelectUbicacionPage,
+    NotasPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,6 @@
+import { NotasPage } from './../notas/notas';
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 
 @Component({
   selector: 'page-logs',
@@ -9,14 +10,17 @@ export class LogsPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public alertCtrl:AlertController
+              public alertCtrl:AlertController,
+              public modalCtrl:ModalController
             ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LogsPage');
-  }
 
+  notas(tipo:string){
+
+    this.modalCtrl.create(NotasPage,{data:tipo}).present();
+
+  }
 
   
   eliminar(){

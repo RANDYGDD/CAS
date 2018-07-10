@@ -1,3 +1,4 @@
+import { robo } from './robo-vehiculo';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
@@ -22,6 +23,8 @@ export class RoboVehiculoPage {
  detalle:string="";
  lat:string="";
  lng:string="";
+
+ robo:robo;
 
   
   constructor(public modalCtrl:ModalController,
@@ -58,6 +61,9 @@ export class RoboVehiculoPage {
       
           if(data != undefined){
            
+            this.lat=data.lat;
+            this.lng=data.lng;
+
             this.cordenadas= JSON.stringify(data);
  
           }
@@ -80,8 +86,23 @@ export class RoboVehiculoPage {
         let loading = this._notepad.cargando();
         loading.present();
 
-        console.log(this.marca);
+        this.robo={
+          marca:this.marca,
+          modelo:this.modelo,
+          year:this.year,
+          color:this.color,
+          num_chasis:this.num_chasis,
+          fecha:this.fecha,
+          tiempo:this.tiempo,
+          detalle:this.detalle,
+          lat:this.lat,
+          lng:this.lng,
+        }
 
+
+        this._notepad.CargarStorage(); 
+        this._notepad.guardar("robo",this.robo);
+        
         loading.dismiss();
 
 
@@ -91,5 +112,19 @@ export class RoboVehiculoPage {
 
    }
 
+
+}
+
+export interface robo{
+  marca:string;
+  modelo:string;
+  year:string;
+  color:string;
+  num_chasis?:string;
+  fecha:string;
+  tiempo:string;
+  detalle:string;
+  lat:string;
+  lng:string;
 
 }

@@ -9,27 +9,52 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-    <ion-list>
-        <ion-item-sliding>
-          <ion-item>
-            <ion-avatar item-start>
-              <img src="http://via.placeholder.com/350x150">
-            </ion-avatar>
-            <h2>El socio es loco</h2>
-            <p>La vida es buena</p>
-          </ion-item>
-          <ion-item-options side="right">
-            <button ion-button color="danger"
-                 (click)="eliminar()"
+    <ion-grid>
+    <ion-row>
+      <ion-col> 
+          <ion-card
+            (click)="notas('crimen')"
+          >
+              <img src="assets/imgs/fingerprint.png"/>
+              <div class="card-title">Notas Crimenes</div>
+          </ion-card>
+      </ion-col>
+
+      <ion-col >
+          <ion-card
+          (click)="notas('accidente')"
+          >
+              <img src="assets/imgs/accidente.png"/>
+              <div class="card-title">Nota Accidentes</div>
+          </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+        <ion-col >
+            <ion-card
+            (click)="notas('robo')"
             >
-              <ion-icon name="trash"></ion-icon>
-              Eliminar
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
+                <img src="assets/imgs/robo-vehiculo.png"/>
+                <div class="card-title">Notas Robo Vehiculo</div>
+            </ion-card>
+        </ion-col>
 
+        <ion-col>
+                <ion-col >
+                        <ion-card
+                        (click)="notas('general')"
+                        >
+                            <img src="assets/imgs/spy.png"/>
+                            <div class="card-title">Notas Generales</div>
+                        </ion-card>
+                    </ion-col>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
+

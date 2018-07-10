@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { crimen } from '../../pages/registrar/registrar';
+
 
 
 
@@ -27,6 +27,58 @@ export class NotePadProvider {
    
   }
 
+  public eliminar(id:number,tipo:string){
+    
+    if(this.platform.is('cordava')){
+             //Celular
+             switch(tipo){
+                 case "crimen":
+                        this.crimenes.splice(id,1);
+                        this.storage.set("crimen",this.crimenes);
+                    break;
+
+                 case "accidente":
+                        this.accidentes.splice(id,1);
+                         this.storage.set("accidente",this.accidentes);
+                      break;
+                 case "robo":
+                          this.robos.splice(id,1);
+                          this.storage.set("robo",this.robos);
+                      break;
+                  case "general":
+                          this.generales.splice(id,1);
+                          this.storage.set("general",this.generales);
+                    break;
+
+             }     
+
+    }else{
+
+      switch(tipo){
+
+        case "crimen":
+             this.crimenes.splice(id,1);
+             localStorage.setItem("crimen", JSON.stringify(this.crimenes));
+           break;
+
+        case "accidente":
+               this.accidentes.splice(id,1);
+               localStorage.setItem("accidente", JSON.stringify(this.accidentes));
+             break;
+        case "robo":
+                this.robos.splice(id,1);
+                localStorage.setItem("robo", JSON.stringify(this.robos));
+             break;
+         case "general":
+               this.generales.splice(id,1);
+               localStorage.setItem("general", JSON.stringify(this.generales));
+           break;
+    } 
+  }
+
+
+ }
+
 
 public  campos(){
 
@@ -36,6 +88,7 @@ public  campos(){
     subTitle:"Para mejores notas, todos los campos marcados con asteríscos (*) son reuquerídos.",
     buttons: ['Cerrar']
   });
+
   alert.present();
 
 
@@ -62,23 +115,26 @@ public  campos(){
  }
 
 
- public guardar(tipo:string,crimen:crimen){
+ public guardar(tipo:string,data:any){
     
     if(this.platform.is('cordava')){
              //Celular
              switch(tipo){
-
                  case "crimen":
+                        this.crimenes.push(data);
                         this.storage.set("crimen",this.crimenes);
                     break;
 
                  case "accidente":
+                        this.accidentes.push(data);
                          this.storage.set("accidente",this.accidentes);
                       break;
                  case "robo":
+                          this.robos.push(data);
                           this.storage.set("robo",this.robos);
                       break;
                   case "general":
+                          this.generales.push(data)
                           this.storage.set("general",this.generales);
                     break;
 
@@ -89,16 +145,20 @@ public  campos(){
       switch(tipo){
 
         case "crimen":
+             this.crimenes.push(data);
              localStorage.setItem("crimen", JSON.stringify(this.crimenes));
            break;
 
         case "accidente":
+               this.accidentes.push(data);
                localStorage.setItem("accidente", JSON.stringify(this.accidentes));
              break;
         case "robo":
+                this.robos.push(data);
                 localStorage.setItem("robo", JSON.stringify(this.robos));
              break;
          case "general":
+               this.generales.push(data);
                localStorage.setItem("general", JSON.stringify(this.generales));
            break;
     } 
@@ -162,14 +222,11 @@ public CargarStorage(){
    }
 
    if(localStorage.getItem('general')){
-     this.accidentes=JSON.parse(localStorage.getItem('general'));
+     this.generales=JSON.parse(localStorage.getItem('general'));
  }
  
 }
 
-  
-
- 
  }
 
 

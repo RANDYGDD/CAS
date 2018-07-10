@@ -1,0 +1,170 @@
+<ion-header>
+
+  <ion-navbar color="barra">
+
+      <ion-buttons end
+      (click)="cerrar()"
+    >
+      <button ion-button>
+          Cerrar
+      </button>
+    </ion-buttons>
+
+    <ion-title>Notas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="tipo=='crimen'" >
+
+    <ion-card  *ngFor="let crimen of _notepad.crimenes; let i = index;"
+       (click)="accion(i)"  class="card-crimen"
+    >
+        <ion-card-header class="header">
+            Incidente: {{crimen.incidente }} 
+        </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+            <ion-row>
+              <ion-col class="tiempo">
+                Fecha: {{  crimen.fecha  }}
+                Tiempo: {{crimen.tiempo}}
+              </ion-col>
+        
+              <ion-col  class="cordenadas">
+
+                Coordenadas: lat:{{crimen.lat}} lng:{{crimen.lat}}
+              
+              </ion-col>
+        
+            </ion-row>
+          </ion-grid>
+      
+          <h5>Detalles: {{crimen.detalle}}</h5>
+       
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+
+    <div *ngIf="tipo=='accidente'" >
+
+        <ion-card  *ngFor="let accidente of _notepad.accidentes; let i = index;"
+           (click)="accion(i)"  
+        >
+            <ion-card-header class="header">
+                 Cantidad Heridos: {{ accidente.heridos }}
+            </ion-card-header>
+    
+          <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                  <ion-col class="tiempo">
+                    Fecha: {{  accidente.fecha  }}
+                    Tiempo: {{accidente.tiempo}}
+                  </ion-col>
+            
+                  <ion-col  class="cordenadas">
+                    Coordenadas: lat:{{accidente.lat}} lng:{{accidente.lat}}
+                  </ion-col>
+            
+                </ion-row>
+              </ion-grid>
+
+              <ion-grid>
+                
+                <ion-col class="invo-car">
+                    Vehiculos Involucrados: {{ accidente.vehiculos }}
+                     
+                </ion-col>
+
+              </ion-grid>
+              
+
+              <ion-textarea  rows="5" disabled  [(ngModel)]="accidente.detalle"></ion-textarea>
+           
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+
+        
+    <div *ngIf="tipo=='robo'" >
+
+        <ion-card  *ngFor="let robo of _notepad.robos; let i = index;"
+           (click)="accion(i)"  
+        >
+            <ion-card-header class="header-robo">
+                 {{ robo.marca }} | {{ robo.modelo }} | {{ robo.year }}
+            </ion-card-header>
+    
+          <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                  <ion-col class="tiempo">
+                    Fecha: {{  robo.fecha  }}
+                    Tiempo: {{robo.tiempo}}
+                  </ion-col>
+            
+                  <ion-col  class="cordenadas">
+                    Coordenadas: lat:{{robo.lat}} lng:{{robo.lat}}
+                  </ion-col>
+            
+                </ion-row>
+              </ion-grid>
+
+              <ion-grid>
+                
+                <ion-col class="invo-car">
+                    Chasis: {{ robo?.num_chasis }}
+                </ion-col>
+
+              </ion-grid>
+              
+
+              <ion-textarea  rows="5" disabled  [(ngModel)]="robo.detalle"></ion-textarea>
+           
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+
+        <div *ngIf="tipo=='general'" >
+
+            <ion-card  *ngFor="let general of _notepad.generales; let i = index;"
+               (click)="accion(i)"  
+            >
+                <ion-card-header class="header-robo">
+                     Generales
+                </ion-card-header>
+        
+              <ion-card-content>
+                <ion-grid>
+                    <ion-row>
+                      <ion-col class="tiempo">
+                        Fecha: {{  general.fecha  }}
+                        Tiempo: {{ general.tiempo}}
+                      </ion-col>
+                
+                      <ion-col  class="cordenadas">
+                        Coordenadas: lat:{{general.lat}} lng:{{general.lat}}
+                      </ion-col>
+                
+                    </ion-row>
+                  </ion-grid>
+  
+    
+                  <ion-textarea  rows="5" disabled  [(ngModel)]="general.detalle"></ion-textarea>
+               
+                </ion-card-content>
+              </ion-card>
+            </div>
+
+
+
+</ion-content>

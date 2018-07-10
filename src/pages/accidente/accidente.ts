@@ -20,6 +20,8 @@ export class AccidentePage {
   lat:string="";
   lng:string="";
 
+  accidente:accidente;
+
   constructor(public modalCtrl:ModalController,
               public _notepad:NotePadProvider
   ) {
@@ -81,12 +83,36 @@ export class AccidentePage {
 
       loading.present();
 
-      console.log(this.detalle);
+    
+      this.accidente = {
+        heridos: this.heridos,
+        vehiculos: this.vehiculos,
+        fecha: this.fecha,
+        tiempo: this.tiempo,
+        detalle:this.detalle,
+        lat:this.lat,
+        lng:this.lng
+      }
 
+
+      this._notepad.CargarStorage(); 
+      this._notepad.guardar("accidente",this.accidente);
       loading.dismiss();
     }
 
 
    }
+
+}
+
+export interface accidente{
+
+  heridos:string;
+  vehiculos:string;
+  fecha:string;
+  tiempo:string;
+  detalle:string;
+  lat:string;
+  lng:string;
 
 }

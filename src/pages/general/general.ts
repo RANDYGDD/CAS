@@ -1,3 +1,4 @@
+import { general } from './general';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
@@ -18,6 +19,8 @@ tiempo:string="";
 detalle:string="";
 lat:string="";
 lng:string="";
+
+general:general;
 
   constructor(public modalCtrl:ModalController,
               public _notepad:NotePadProvider
@@ -76,8 +79,17 @@ lng:string="";
 
         loading.present();
 
-        console.log(this.detalle);
+        this.general={
+            fecha:this.fecha,
+            tiempo:this.tiempo,
+            detalle:this.detalle,
+            lat: this.lat,
+            lng:this.lng
+        }
 
+        this._notepad.CargarStorage(); 
+        this._notepad.guardar("general",this.general);
+        
         loading.dismiss();
 
       }
@@ -87,5 +99,16 @@ lng:string="";
 
 
 
+
+}
+
+
+export interface general{
+
+fecha: string;
+tiempo:string;
+detalle:string;
+lat:string;
+lng:string;
 
 }

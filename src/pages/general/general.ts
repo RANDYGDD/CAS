@@ -1,10 +1,8 @@
 import { general } from './general';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
-
-
 
 @Component({
   selector: 'page-general',
@@ -20,13 +18,34 @@ detalle:string="";
 lat:string="";
 lng:string="";
 
+id:number;
+
 general:general;
 
   constructor(public modalCtrl:ModalController,
-              public _notepad:NotePadProvider
+              public _notepad:NotePadProvider,
+              public navParams:NavParams,
+              public navCtrl:NavController
   ) {
 
-    this.formatear();
+    if( this.navParams.get("id") != undefined ){
+      this.id=this.navParams.get("id");
+
+      this.general=this._notepad.generales[this.id];
+      
+      this.fecha=this.general.fecha;
+      this.tiempo=this.general.tiempo;
+      this.detalle=this.general.detalle;
+      this.cordenadas="Modificar";
+      this.lat=this.general.lat;
+      this.lng=this.general.lng;
+
+    }else{
+
+      this.formatear();
+    }
+
+   
   }
 
 
@@ -75,23 +94,42 @@ general:general;
 
       }else{
 
-        let loading = this._notepad.cargando();
+        if(this.id != undefined){
 
-        loading.present();
+           this.general.fecha=this.fecha;
+           this.general.tiempo=this.tiempo;
+           this.general.detalle=this.detalle;
+           this.general.lat=this.lat;
+           this.general.lng=this.lng;
 
-        this.general={
-            fecha:this.fecha,
-            tiempo:this.tiempo,
-            detalle:this.detalle,
-            lat: this.lat,
-            lng:this.lng
+
+          this._notepad.generales[this.id]=this.general;
+          this._notepad.editar("general");
+          this.navCtrl.pop();
+
+
+        }else{
+
+          let loading = this._notepad.cargando();
+
+          loading.present();
+  
+          this.general={
+              fecha:this.fecha,
+              tiempo:this.tiempo,
+              detalle:this.detalle,
+              lat: this.lat,
+              lng:this.lng
+          }
+  
+          this._notepad.CargarStorage(); 
+          this._notepad.guardar("general",this.general);
+          
+          loading.dismiss();
+  
         }
 
-        this._notepad.CargarStorage(); 
-        this._notepad.guardar("general",this.general);
-        
-        loading.dismiss();
-
+       
       }
 
      

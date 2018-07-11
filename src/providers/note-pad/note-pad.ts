@@ -115,6 +115,9 @@ public  campos(){
  }
 
 
+ 
+
+
  public guardar(tipo:string,data:any){
     
     if(this.platform.is('cordava')){
@@ -166,6 +169,52 @@ public  campos(){
 
 
  }
+
+
+ public editar(tipo:string){
+    
+  if(this.platform.is('cordava')){
+           //Celular
+           switch(tipo){
+               case "crimen":
+                      this.storage.set("crimen",this.crimenes);
+                  break;
+
+               case "accidente":
+                       this.storage.set("accidente",this.accidentes);
+                    break;
+               case "robo":
+                        this.storage.set("robo",this.robos);
+                    break;
+                case "general":
+                        this.storage.set("general",this.generales);
+                  break;
+
+           }     
+
+  }else{
+
+    switch(tipo){
+
+      case "crimen":
+           localStorage.setItem("crimen", JSON.stringify(this.crimenes));
+         break;
+
+      case "accidente":
+             localStorage.setItem("accidente", JSON.stringify(this.accidentes));
+           break;
+      case "robo":
+              localStorage.setItem("robo", JSON.stringify(this.robos));
+           break;
+       case "general":
+             localStorage.setItem("general", JSON.stringify(this.generales));
+         break;
+  } 
+}
+
+
+}
+
 
 
 public CargarStorage(){

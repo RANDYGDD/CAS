@@ -1,6 +1,10 @@
+import { GeneralPage } from './../general/general';
+import { AccidentePage } from './../accidente/accidente';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 import { Component } from '@angular/core';
-import { NavParams, ViewController, ActionSheetController  } from 'ionic-angular';
+import { NavParams, ViewController, ActionSheetController, NavController  } from 'ionic-angular';
+import { RegistrarPage } from '../registrar/registrar';
+import { RoboVehiculoPage } from '../robo-vehiculo/robo-vehiculo';
 
 
 
@@ -15,7 +19,8 @@ export class NotasPage {
   constructor(public navParams: NavParams,
               public ViewCtrl:ViewController,
               public _notepad:NotePadProvider,
-              public actionSheetCtrl: ActionSheetController
+              public actionSheetCtrl: ActionSheetController,
+              public navCtrl:NavController
   ) {
 
 
@@ -44,7 +49,29 @@ export class NotasPage {
         },{
           text: 'Editar',
           handler: () => {
-            console.log('Archive clicked');
+ 
+            console.log(this.tipo);
+             switch(this.tipo){
+
+                    case "crimen":
+                          this.navCtrl.push(RegistrarPage,{"id":id});
+                         break;
+
+                   case "robo":
+                           this.navCtrl.push(RoboVehiculoPage,{"id":id});     
+                         break;
+
+                  case   "general":
+                            this.navCtrl.push(GeneralPage,{"id":id});  
+                           break;
+
+                  case "accidente":
+                             this.navCtrl.push(AccidentePage,{"id":id});
+                        break; 
+
+             }
+               
+            
           }
         },{
           text: 'Cancelar',

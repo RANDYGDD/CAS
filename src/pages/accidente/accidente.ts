@@ -1,6 +1,6 @@
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { NotePadProvider } from '../../providers/note-pad/note-pad';
 
 
@@ -20,13 +20,33 @@ export class AccidentePage {
   lat:string="";
   lng:string="";
 
+  id:number;
   accidente:accidente;
 
   constructor(public modalCtrl:ModalController,
-              public _notepad:NotePadProvider
+              public _notepad:NotePadProvider,
+              public navParams:NavParams,
+              public navCtrl:NavController
   ) {
 
-     this.formatear();
+    if( this.navParams.get("id") != undefined ){
+      this.id=this.navParams.get("id");
+      
+      this.accidente=this._notepad.accidentes[this.id];       
+      
+      this.vehiculos = this.accidente.vehiculos;
+      this.heridos = this.accidente.heridos;
+      this.fecha = this.accidente.fecha;
+      this.cordenadas = "Modificar";
+      this.tiempo = this.accidente.tiempo;
+      this.detalle = this.accidente.detalle;
+      this.lat =this.accidente.lat;
+      this.lng=this.accidente.lng;
+      
+    }else{
+      this.formatear();
+
+    }
      
 
   }
@@ -79,25 +99,46 @@ export class AccidentePage {
 
     }else{
 
-      let loading= this._notepad.cargando();
 
-      loading.present();
+      if(this.id != undefined){
 
-    
-      this.accidente = {
-        heridos: this.heridos,
-        vehiculos: this.vehiculos,
-        fecha: this.fecha,
-        tiempo: this.tiempo,
-        detalle:this.detalle,
-        lat:this.lat,
-        lng:this.lng
+        this.accidente.vehiculos = this.vehiculos;
+        this.accidente.heridos=this.heridos;
+        this.accidente.fecha=this.fecha;
+        this.accidente.tiempo=this.tiempo;
+        this.accidente.lng=this.lng;
+        this.accidente.lat=this.lat;
+        this.accidente.detalle=this.detalle;
+      
+        this._notepad.accidentes[this.id]=this.accidente;
+        this._notepad.editar("accidente");
+        this.navCtrl.pop();
+
+      }else{
+
+
+        let loading= this._notepad.cargando();
+
+        loading.present();
+  
+      
+        this.accidente = {
+          heridos: this.heridos,
+          vehiculos: this.vehiculos,
+          fecha: this.fecha,
+          tiempo: this.tiempo,
+          detalle:this.detalle,
+          lat:this.lat,
+          lng:this.lng
+        }
+  
+  
+        this._notepad.CargarStorage(); 
+        this._notepad.guardar("accidente",this.accidente);
+        loading.dismiss();
+
       }
-
-
-      this._notepad.CargarStorage(); 
-      this._notepad.guardar("accidente",this.accidente);
-      loading.dismiss();
+   
     }
 
 

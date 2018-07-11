@@ -1,7 +1,7 @@
 import { crimen } from './registrar';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { NotePadProvider } from '../../providers/note-pad/note-pad';
 
 @Component({
@@ -22,16 +22,40 @@ export class RegistrarPage {
 
   public crimen:crimen;
   
-
+  public id:number;
 
   
   constructor(public navCtrl: NavController,
               public modalCtrl:ModalController,
-              public _notepad:NotePadProvider
+              public _notepad:NotePadProvider,
+              public navParams:NavParams
             ) {
 
-              this.formatear();
+             
+
+              if( this.navParams.get("id") != undefined ){
+                this.id=this.navParams.get("id");
+                
+                this.crimen=this._notepad.crimenes[this.id];       
+                
+                this.incidente=this.crimen.incidente;
+                this.fecha = this.crimen.fecha;
+                this.cordenadas = "Modificar";
+                this.tiempo = this.crimen.tiempo;
+                this.detalle = this.crimen.detalle;
+                this.lat =this.crimen.lat;
+                this.lng=this.crimen.lng;
+                
+              }else{
+                this.formatear();
+
+              }
+
+          
+
   }
+
+  
 
 
   formatear(){
@@ -56,7 +80,6 @@ export class RegistrarPage {
     modal.onDidDismiss(data =>{
       
           if(data != undefined){
-           
             this.lat=data.lat;
             this.lng=data.lng;
 
@@ -81,23 +104,44 @@ export class RegistrarPage {
 
     }else{
 
-    let loading=this._notepad.cargando();
 
-    loading.present();
+      if(this.id != undefined){
 
-      this.crimen={
-        incidente: this.incidente,
-        fecha: this.fecha,
-        tiempo:this.tiempo,
-        detalle: this.detalle,
-        lat:this.lat,
-        lng: this.lng
+        this.crimen.incidente=this.incidente;
+        this.crimen.detalle=this.detalle;
+        this.crimen.fecha=this.fecha;
+        this.crimen.tiempo=this.tiempo;
+        this.crimen.lng=this.lng;
+        this.crimen.lat=this.lat;
+      
+        this._notepad.crimenes[this.id] = this.crimen;
+        this._notepad.editar("crimen");
+        this.navCtrl.pop();
+
+
+      }else{
+
+        let loading=this._notepad.cargando();
+
+        loading.present();
+    
+          this.crimen={
+            incidente: this.incidente,
+            fecha: this.fecha,
+            tiempo:this.tiempo,
+            detalle: this.detalle,
+            lat:this.lat,
+            lng: this.lng
+          }
+    
+         this._notepad.CargarStorage(); 
+         this._notepad.guardar("crimen",this.crimen);
+    
+         loading.dismiss();
+
       }
 
-     this._notepad.CargarStorage(); 
-     this._notepad.guardar("crimen",this.crimen);
 
-     loading.dismiss();
     }
 
   }

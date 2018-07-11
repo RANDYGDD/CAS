@@ -1,7 +1,7 @@
 import { robo } from './robo-vehiculo';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 
 @Component({
@@ -26,12 +26,40 @@ export class RoboVehiculoPage {
 
  robo:robo;
 
+ id:number;
   
   constructor(public modalCtrl:ModalController,
-              public _notepad:NotePadProvider
+              public _notepad:NotePadProvider,
+              public navParams:NavParams,
+              public navCtrl:NavController
   ) {
 
-    this.formatear();
+    if( this.navParams.get("id") != undefined ){
+      this.id=this.navParams.get("id");
+
+      this.robo=this._notepad.robos[this.id];
+
+      this.marca=this.robo.marca;
+      this.modelo=this.robo.modelo;
+      this.year=this.robo.year;
+      this.cordenadas="Modificar";
+      this.color=this.robo.color;
+      this.num_chasis=this.robo.num_chasis;
+      this.fecha=this.robo.fecha;
+      this.tiempo=this.robo.tiempo;
+      this.detalle=this.robo.detalle;
+      this.lat=this.robo.lat;
+      this.lng=this.robo.lng;
+
+
+
+    }else{
+
+      this.formatear();
+
+    }
+
+  
 
   }
 
@@ -83,27 +111,54 @@ export class RoboVehiculoPage {
         this._notepad.campos();
        }else{
 
-        let loading = this._notepad.cargando();
-        loading.present();
 
-        this.robo={
-          marca:this.marca,
-          modelo:this.modelo,
-          year:this.year,
-          color:this.color,
-          num_chasis:this.num_chasis,
-          fecha:this.fecha,
-          tiempo:this.tiempo,
-          detalle:this.detalle,
-          lat:this.lat,
-          lng:this.lng,
+        if(this.id != undefined){
+
+             this.robo.marca=this.marca;
+             this.robo.modelo=this.modelo
+             this.robo.color=this.color;
+             this.robo.year=this.year;
+             this.robo.num_chasis=this.num_chasis;
+             this.robo.fecha =this.fecha;
+             this.robo.tiempo=this.tiempo;
+             this.robo.detalle=this.detalle;
+             this.robo.lat=this.lat;
+             this.robo.lng=this.lng;
+
+           this._notepad.robos[this.id]=this.robo;
+           this._notepad.editar("robo");
+           this.navCtrl.pop();
+
+
+
+        }else{
+
+          let loading = this._notepad.cargando();
+          loading.present();
+  
+          this.robo={
+            marca:this.marca,
+            modelo:this.modelo,
+            year:this.year,
+            color:this.color,
+            num_chasis:this.num_chasis,
+            fecha:this.fecha,
+            tiempo:this.tiempo,
+            detalle:this.detalle,
+            lat:this.lat,
+            lng:this.lng,
+          }
+  
+  
+          this._notepad.CargarStorage(); 
+          this._notepad.guardar("robo",this.robo);
+          
+          loading.dismiss();
+
+
         }
 
-
-        this._notepad.CargarStorage(); 
-        this._notepad.guardar("robo",this.robo);
-        
-        loading.dismiss();
+    
 
 
        }

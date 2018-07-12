@@ -21,7 +21,7 @@
   <div *ngIf="tipo=='crimen'" >
 
     <ion-card  *ngFor="let crimen of _notepad.crimenes; let i = index;"
-       (click)="accion(i)"  class="card-crimen"
+       (click)="accion(i,crimen.lat,crimen.lng)"  class="card-crimen"
     >
         <ion-card-header class="header">
             Incidente: {{crimen.incidente }} 
@@ -55,7 +55,7 @@
     <div *ngIf="tipo=='accidente'" >
 
         <ion-card  *ngFor="let accidente of _notepad.accidentes; let i = index;"
-           (click)="accion(i)"  
+           (click)="accion(i,accidente.lat,accidente.lng)"  
         >
             <ion-card-header class="header">
                  Cantidad Heridos: {{ accidente.heridos }}
@@ -97,7 +97,7 @@
     <div *ngIf="tipo=='robo'" >
 
         <ion-card  *ngFor="let robo of _notepad.robos; let i = index;"
-           (click)="accion(i)"  
+           (click)="accion(i,robo.lat,robo.lng)"  
         >
             <ion-card-header class="header-robo">
                  {{ robo.marca }} | {{ robo.modelo }} | {{ robo.year }}
@@ -137,7 +137,7 @@
         <div *ngIf="tipo=='general'" >
 
             <ion-card  *ngFor="let general of _notepad.generales; let i = index;"
-               (click)="accion(i)"  
+               (click)="accion(i,general.lat,general.lng)"  
             >
                 <ion-card-header class="header-robo">
                      Generales

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AlertController, LoadingController, Platform } from 'ionic-angular';
+import { AlertController, LoadingController, Platform, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -21,7 +21,8 @@ export class NotePadProvider {
               public alertCtrl:AlertController,
               public loadingCtrl:LoadingController,
               public platform:Platform,
-              public storage:Storage
+              public storage:Storage,
+              public toast:ToastController
 
   ) {
    
@@ -29,7 +30,7 @@ export class NotePadProvider {
 
   public eliminar(id:number,tipo:string){
     
-    if(this.platform.is('cordava')){
+    if(this.platform.is('android')){
              //Celular
              switch(tipo){
                  case "crimen":
@@ -120,12 +121,19 @@ public  campos(){
 
  public guardar(tipo:string,data:any){
     
-    if(this.platform.is('cordava')){
+    if(this.platform.is('android')){
+      
              //Celular
              switch(tipo){
                  case "crimen":
                         this.crimenes.push(data);
                         this.storage.set("crimen",this.crimenes);
+
+                        this.toast.create({
+                          message:"Almacenado 3 crimen: " + tipo,
+                          duration:5000,
+                        }).present();
+                        
                     break;
 
                  case "accidente":
@@ -173,7 +181,7 @@ public  campos(){
 
  public editar(tipo:string){
     
-  if(this.platform.is('cordava')){
+  if(this.platform.is('android')){
            //Celular
            switch(tipo){
                case "crimen":
@@ -219,7 +227,7 @@ public  campos(){
 
 public CargarStorage(){
 
-  if(this.platform.is("cordova")){
+  if(this.platform.is("android")){
 
     this.storage.ready()
              .then(()=>{

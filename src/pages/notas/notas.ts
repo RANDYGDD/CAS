@@ -2,9 +2,11 @@ import { GeneralPage } from './../general/general';
 import { AccidentePage } from './../accidente/accidente';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 import { Component } from '@angular/core';
-import { NavParams, ViewController, ActionSheetController, NavController  } from 'ionic-angular';
+import { NavParams, ViewController, ActionSheetController, NavController, ModalController } from 'ionic-angular';
 import { RegistrarPage } from '../registrar/registrar';
 import { RoboVehiculoPage } from '../robo-vehiculo/robo-vehiculo';
+import { NotaUbicacionPage } from '../nota-ubicacion/nota-ubicacion';
+
 
 
 
@@ -20,7 +22,8 @@ export class NotasPage {
               public ViewCtrl:ViewController,
               public _notepad:NotePadProvider,
               public actionSheetCtrl: ActionSheetController,
-              public navCtrl:NavController
+              public navCtrl:NavController,
+              public modalCtrl:ModalController
   ) {
 
 
@@ -33,9 +36,10 @@ export class NotasPage {
 
 
 
- public accion(id:number) {
+ public accion(id:number,lat:number,lng:number) {
 
 
+  console.log(lat +" "+ lng)
 
     const actionSheet = this.actionSheetCtrl.create({
       title: 'Acción sobre la Nota',
@@ -77,7 +81,15 @@ export class NotasPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+           
+          }
+        }
+
+        ,{
+          text: 'Ubicacion',
+          handler: () => {
+            let modal= this.modalCtrl.create(NotaUbicacionPage,{lat:lat,lng:lng});
+            modal.present();
           }
         }
       ]

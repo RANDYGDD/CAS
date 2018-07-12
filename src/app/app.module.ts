@@ -73,6 +73,8 @@ import { GeneralPage } from './../pages/general/general';
 import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacion';
 import { NotePadProvider } from '../providers/note-pad/note-pad';
 import { NotasPage } from '../pages/notas/notas';
+import { NotaUbicacionPage } from './../pages/nota-ubicacion/nota-ubicacion';
+
 
 
 @NgModule({
@@ -102,7 +104,8 @@ import { NotasPage } from '../pages/notas/notas';
     AccidentePage,
     GeneralPage,
     SelectUbicacionPage,
-    NotasPage
+    NotasPage,
+    NotaUbicacionPage
     
   ],
   imports: [
@@ -146,7 +149,8 @@ import { NotasPage } from '../pages/notas/notas';
     AccidentePage,
     GeneralPage,
     SelectUbicacionPage,
-    NotasPage
+    NotasPage,
+    NotaUbicacionPage
   ],
   providers: [
     StatusBar,

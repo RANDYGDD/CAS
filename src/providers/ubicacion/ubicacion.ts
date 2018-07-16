@@ -44,7 +44,7 @@ export class UbicacionProvider {
      
      
 
-      this.policia.update({
+      this.policia.ref.update({
             lat: resp.coords.latitude,
             lng: resp.coords.longitude,
             clave: this.usuario.clave
@@ -63,7 +63,7 @@ export class UbicacionProvider {
 
               console.log(data);
                
-                this.policia.update({
+                this.policia.ref.update({
                   lat: data.coords.latitude,
                   lng: data.coords.longitude,
                   speed: data.coords.speed,

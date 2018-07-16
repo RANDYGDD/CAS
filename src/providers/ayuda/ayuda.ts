@@ -18,7 +18,7 @@ export class AyudaProvider {
 
    this.ObtenerData().subscribe((data:any)=>{
 
-    this.policia.set({
+    this.policia.ref.set({
       gravedad:gravedad,
       fecha: new Date(),
       lat: data.lat,
@@ -29,7 +29,9 @@ export class AyudaProvider {
       accuracy: data.accuracy,
       heading:data.heading,
       altitudeAccuracy: data.altitudeAccuracy,
-      clave: this.usuario.clave
+      unidad:data.unidad,
+      clave: this.usuario.clave,
+      state:true,
      });    
 
     

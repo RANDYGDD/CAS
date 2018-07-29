@@ -3,7 +3,7 @@
   <ion-navbar
       color="barra"
   >
-    <ion-title>Randy Dilone</ion-title>
+    <ion-title>{{ persona.nombres }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,73 +20,64 @@
 
     <ion-row>
 
-        <ion-col col-10 push-2>
+        <ion-col col-8 push-4>
             <label for="">Nombres</label>
-            <h5>Randy Gabriel</h5>
+            <h5>{{ persona.nombres }}</h5>
           </ion-col>
 
 
-        <ion-col col-10 push-2>
+        <ion-col col-8 push-4>
             <label for="">Apellidos</label>
-            <h5>Dilone De Leon</h5>
+            <h5>{{ persona.apellidos }}</h5>
           </ion-col>
 
 
-       <ion-col col-10 push-2>
+       <ion-col col-8 push-4>
          <label for="">Cedula</label>
-         <h5>402-1408915-9</h5>
+         <h5>{{ persona.cedula }}</h5>
        </ion-col>
 
-       <ion-col col-10 push-2>
+       <ion-col col-8 push-4>
           <label for="">Nacionalidad</label>
-          <h5>Dominicana</h5>
+          <h5>{{ persona.nacionalidad  }}</h5>
         </ion-col>
     </ion-row>
 
 
     <ion-row>
-        <ion-col col-4>
+        <ion-col col-4 push-2>
         <label for="">Sexo:</label>
-           <strong>M</strong>
+           <strong>{{ persona.sexo  }}</strong>
         </ion-col>
-        <ion-col col-4>
-         <label for="">Sangre:</label>
-         <strong> O+</strong>
-         
-        </ion-col>
-        <ion-col col-4>
+
+        <ion-col col-4 push-2>
            <label for="">Estado Civil:</label>
-             <strong>S</strong>
+             <strong>{{ persona.estado_civil  }}</strong>
         </ion-col>
       </ion-row>
 
       <ion-row>
-          <ion-col col-10 push-2>
-          <label for="">Ocupacion</label>
-             <h5>Estudiante</h5>
+          <ion-col col-8 push-4>
+          <label for="">Alia</label>
+             <h5>{{ persona?.alias }}</h5>
           </ion-col>
       </ion-row>
 
         <ion-row>
-            <ion-col col-10 push-2>
+            <ion-col col-8 push-4>
             <label for="">Direccion Residencia</label>
-               <h5>Principal Casa 10-6</h5>
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col col-10 push-2>
-            <label for="">Sector</label>
-               <h5>Rancho Viejo</h5>
+               <h5>{{ persona.residencia }}</h5>
             </ion-col>
         </ion-row>
   </ion-grid>
 
   <ion-item>
-      <button ion-button full round color="danger"
+      <button 
+       *ngIf="crimen"
+       ion-button full round color="danger"
        (click)="historial()"
       >Incidencias con la ley</button>
-      <ion-badge item-end color="secondary">5</ion-badge>
+      <ion-badge item-end color="secondary">{{crimen}}</ion-badge>
   </ion-item>
 
 

@@ -25,13 +25,15 @@ export class MyApp {
       _usuario.CargarStorage().then(existe=>{
         
         statusBar.styleDefault();
-        splashScreen.hide();
+       
 
           if(existe){
             this.rootPage=TabsPage;
           }else{
             this.rootPage=LoginPage;
           }
+          
+          splashScreen.hide();
 
       });
       

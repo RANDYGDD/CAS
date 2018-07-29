@@ -7,13 +7,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MostrarNewsPage {
 
-  news:any[]=[];
+  news:any={};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.news=this.navParams.data;
+
+    console.log(this.news);
+
   }
 
-  ionViewDidLoad() {
-     this.news=this.navParams.data
-  }
 
 }

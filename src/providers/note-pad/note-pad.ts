@@ -51,7 +51,12 @@ export class NotePadProvider {
                           this.storage.set("general",this.generales);
                     break;
 
-             }     
+             }    
+             
+             this.toast.create({
+              message:"Eliminado Correctamente",
+              duration:4000,
+            }).present();
 
     }else{
 
@@ -97,13 +102,6 @@ public  campos(){
 
 
 
- public enviarNotas(nota:any){
-
-  return this.http.get("www.google.com");
-
- }
-
-
  cargando(){
 
   let loading = this.loadingCtrl.create({
@@ -128,12 +126,6 @@ public  campos(){
                  case "crimen":
                         this.crimenes.push(data);
                         this.storage.set("crimen",this.crimenes);
-
-                        this.toast.create({
-                          message:"Almacenado 3 crimen: " + tipo,
-                          duration:5000,
-                        }).present();
-                        
                     break;
 
                  case "accidente":
@@ -149,7 +141,12 @@ public  campos(){
                           this.storage.set("general",this.generales);
                     break;
 
-             }     
+             }  
+             
+             this.toast.create({
+              message:"Almacenado correctamente",
+              duration:4000,
+            }).present();
 
     }else{
 
@@ -198,7 +195,13 @@ public  campos(){
                         this.storage.set("general",this.generales);
                   break;
 
-           }     
+           }    
+           
+           
+           this.toast.create({
+            message:"Editado Correctamente",
+            duration:4000,
+          }).present();
 
   }else{
 

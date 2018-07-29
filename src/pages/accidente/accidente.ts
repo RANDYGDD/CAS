@@ -1,3 +1,4 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, NavController } from 'ionic-angular';
@@ -26,7 +27,8 @@ export class AccidentePage {
   constructor(public modalCtrl:ModalController,
               public _notepad:NotePadProvider,
               public navParams:NavParams,
-              public navCtrl:NavController
+              public navCtrl:NavController,
+              public _huellas:HuellasProvider
   ) {
 
     if( this.navParams.get("id") != undefined ){
@@ -88,6 +90,19 @@ export class AccidentePage {
  
    }
 
+   huella(){
+
+    this._huellas.LeerHuella()
+    .then((result: any) => {
+ 
+         this.enviar();
+           
+   }).catch((error: any) =>{
+           return false;
+   });
+ 
+   }
+
 
    enviar(){
 
@@ -135,6 +150,7 @@ export class AccidentePage {
   
         this._notepad.CargarStorage(); 
         this._notepad.guardar("accidente",this.accidente);
+        this.limpiar();
         loading.dismiss();
 
       }
@@ -144,7 +160,22 @@ export class AccidentePage {
 
    }
 
+   limpiar(){
+
+    this.heridos="";
+    this.vehiculos="";
+    this.fecha="";
+    this.tiempo="";
+    this.detalle="";
+    this.lat="";
+    this.lng="";
+
+   }
+
 }
+
+
+
 
 export interface accidente{
 

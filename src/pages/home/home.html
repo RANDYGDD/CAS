@@ -8,15 +8,6 @@
           </button>
         </ion-buttons>
 
-      <ion-buttons end
-         (click)="notificacion()"
-      >
-          <button ion-button icon-only>
-            <ion-icon name="notifications" color="fondo"></ion-icon>
-            <ion-badge item-end color="danger">10</ion-badge>
-          </button>
-        </ion-buttons>
-
     <ion-title>Noticias</ion-title>
   </ion-navbar>
 </ion-header>
@@ -29,21 +20,21 @@
     </ion-refresher>
 
 
-    <ion-card *ngFor="let news of _news.noticias; let i of index"
-      (click)="MostrarNoticias(i)"
+    <ion-card 
+         *ngFor="let noticia of noticias"
+         (click)="MostrarNoticias(noticia)"
     >
         <img height="150" src="assets/imgs/flag.png"/>
         <ion-card-content>
           <ion-card-title>
-                {{news.title}}
+                {{ noticia.titular  }}
             </ion-card-title>
           <p>
-            {{ news.body }}
           </p>
 
           <ion-item>
               <ion-badge item-end>Seguir leyendo</ion-badge>
-              <ion-badge item-start>Seguir leyendo</ion-badge>
+              <ion-badge item-start>{{ noticia.created_at }}</ion-badge>
           </ion-item>
         </ion-card-content>
       </ion-card>

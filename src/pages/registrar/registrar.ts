@@ -1,8 +1,10 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { crimen } from './registrar';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { NotePadProvider } from '../../providers/note-pad/note-pad';
+
 
 @Component({
   selector: 'page-registrar',
@@ -28,7 +30,8 @@ export class RegistrarPage {
   constructor(public navCtrl: NavController,
               public modalCtrl:ModalController,
               public _notepad:NotePadProvider,
-              public navParams:NavParams
+              public navParams:NavParams,
+              public _huellas:HuellasProvider
             ) {
 
              
@@ -92,9 +95,24 @@ export class RegistrarPage {
    }
 
 
+
+   huella(){
+
+    this._huellas.LeerHuella()
+    .then((result: any) => {
+ 
+         this.enviar();
+           
+   }).catch((error: any) =>{
+           return false;
+   });
+ 
+ 
+  
+   }
+
+
   enviar(){
-
-
 
     if(
       this.incidente.length == 0 || this.cordenadas.length == 0 || this.fecha.length ==0 ||
@@ -136,7 +154,7 @@ export class RegistrarPage {
     
          this._notepad.CargarStorage(); 
          this._notepad.guardar("crimen",this.crimen);
-    
+         this.limpiar();
          loading.dismiss();
 
       }
@@ -146,6 +164,18 @@ export class RegistrarPage {
 
   }
 
+
+
+  limpiar(){
+
+    this.incidente="";
+    this.fecha="";
+    this.tiempo="";
+    this.detalle="";
+    this.lat="";
+    this.lng="";
+
+  }
 
 
 }

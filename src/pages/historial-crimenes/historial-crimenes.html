@@ -21,30 +21,41 @@
 
 <ion-content>
 
-    <ion-list>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="http://via.placeholder.com/350x150">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <!-- <button ion-button clear item-end>10</button> -->
-    </ion-item>
-  </ion-list>
 
-  <ion-list>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="http://via.placeholder.com/350x150">
-        </ion-thumbnail>
-        <h2>My Neighbor Totoroa</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <h2>My Neighbor Totoro</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <!-- <button ion-button clear item-end>10</button> -->
-      </ion-item>
-    </ion-list>
+  <ion-card>
+    <ion-card-header>
+        Causa
+    </ion-card-header>
+    <ion-card-content>
+       {{ultima_condena.titular}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        Descripción
+    </ion-card-header>
+    <ion-card-content class="content">
+       {{ultima_condena.descripcion}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        Fecha Ingreso - Fecha Salida
+    </ion-card-header>
+    <ion-card-content>
+       {{ultima_condena.created_at}} -- {{ultima_condena.fecha_salida}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        Prisión - Cantidad de años
+    </ion-card-header>
+    <ion-card-content>
+       {{prision.nombre_prision}} -- {{ultima_condena.years}} Años
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

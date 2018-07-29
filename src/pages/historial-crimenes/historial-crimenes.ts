@@ -8,16 +8,22 @@ import { NavController, NavParams, ModalController, ViewController } from 'ionic
 })
 export class HistorialCrimenesPage {
 
+  perfil:any;
+  ultima_condena:any;
+  prision:any;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public viewCtrl:ViewController
              
             ) {
+
+             this.perfil=this.viewCtrl.data;
+             console.log(this.perfil.perfil);
+             this.ultima_condena=this.perfil.perfil.data.ultima_condena;
+             this.prision=this.perfil.perfil.data.prision;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HistorialCrimenesPage');
-  }
 
 
   cerrar(){

@@ -7,6 +7,8 @@ import { NoticiasProvider } from './../../providers/noticias/noticias';
 import { RedesProvider } from './../../providers/redes/redes';
 
 import { Refresher} from 'ionic-angular';
+import { ConsultalProvider } from '../../providers/consultal/consultal';
+
 
 @Component({
   selector: 'page-home',
@@ -14,11 +16,14 @@ import { Refresher} from 'ionic-angular';
 })
 export class HomePage {
 
+  public noticias:any;
+
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
               public _news:NoticiasProvider,
               public loadingCtrl:LoadingController,
-              public _red:RedesProvider
+              public _red:RedesProvider,
+              public _consultar:ConsultalProvider
             )  
   {
 
@@ -26,31 +31,32 @@ export class HomePage {
     this._red.EstatusNetwork();
     this.Noticias();
 
+
   }
 
 
   Noticias(){
 
-    // let loading = this.loadingCtrl.create({
-    //   content: 'Cargando....'
-    // });
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando....'
+    });
 
-    //     loading.present();
+     loading.present();
 
-    this._news.CargarNoticias()
-    .then(()=>{  
-      //  loading.dismiss();
+    this._news.CargarNoticias().subscribe(
       
-      })
-      .catch(() => {
-      //  loading.dismiss();
-    });  
+        (data:any)=>{
+            this.noticias=data.data.news.data;
+            loading.dismiss();                             
+        }),
+
+        (error)=>{
+          loading.dismiss();
+        }
   }
 
   MostrarNoticias(news:any){
-
     this.navCtrl.push(MostrarNewsPage,news);
-
   }
 
 
@@ -66,10 +72,7 @@ perfil() {
 
   doRefresh(refresher:Refresher) {
 
-    this._news.CargarNoticias().then(()=>{
-        
-             refresher.complete();
-    });
+     
  
   }
 

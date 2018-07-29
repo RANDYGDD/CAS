@@ -1,8 +1,10 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { robo } from './robo-vehiculo';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
+
 
 @Component({
   selector: 'page-robo-vehiculo',
@@ -31,7 +33,8 @@ export class RoboVehiculoPage {
   constructor(public modalCtrl:ModalController,
               public _notepad:NotePadProvider,
               public navParams:NavParams,
-              public navCtrl:NavController
+              public navCtrl:NavController,
+              public _huellas:HuellasProvider
   ) {
 
     if( this.navParams.get("id") != undefined ){
@@ -101,6 +104,22 @@ export class RoboVehiculoPage {
    }
 
 
+   huella(){
+
+    this._huellas.LeerHuella()
+    .then((result: any) => {
+ 
+         this.enviar();
+           
+   }).catch((error: any) =>{
+           return false;
+   });
+ 
+ 
+  
+   }
+
+
 
    enviar(){
 
@@ -164,6 +183,22 @@ export class RoboVehiculoPage {
        }
 
 
+
+   }
+
+
+   limpiar(){
+
+    this.marca="";
+    this.modelo="";
+    this.year="";
+    this.color="";
+    this.num_chasis="";
+    this.fecha="";
+    this.tiempo="";
+    this.detalle="";
+    this.lat="";
+    this.lng="";
 
    }
 

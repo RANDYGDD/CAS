@@ -118,9 +118,10 @@ import { NotaUbicacionPage } from './../pages/nota-ubicacion/nota-ubicacion';
     AngularFireModule.initializeApp(firebaseConf),
     AngularFirestoreModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8'
+      apiKey:'AIzaSyA6IlWuVpuKb5KT81_hut-1rlIJ7U29rGI'
     }),
     ChartsModule
+    //'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8'
   ],
   bootstrap: [IonicApp],
   entryComponents: [

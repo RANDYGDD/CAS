@@ -1,3 +1,4 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { BuscadosPage } from './../buscados/buscados';
 import { PlacaPage } from './../placa/placa';
 import { NotificacionesPage } from './../notificaciones/notificaciones';
@@ -7,6 +8,7 @@ import { NavController, NavParams,ModalController } from 'ionic-angular';
 import { ConsultarPage } from './../consultar/consultar';
 import { AlertController } from 'ionic-angular';
 import { GraficosPage } from './../graficos/graficos';
+
 
 @Component({
   selector: 'page-consultas',
@@ -20,7 +22,8 @@ export class ConsultasPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public modalCtrl:ModalController,
-              public alertCtrl: AlertController
+              public alertCtrl: AlertController,
+              public _huellas:HuellasProvider
             ) {
   }
 
@@ -29,13 +32,30 @@ perfil() {
     this.modalCtrl.create(PerfilPage).present();
 }  
 
-notificacion(){
-  this.modalCtrl.create(NotificacionesPage).present();
-}
 
 graficos(){
 
-  this.navCtrl.push(GraficosPage);
+  this._huellas.LeerHuella().then((result: any) => {
+
+                      this.navCtrl.push(GraficosPage);
+
+                  }).catch((error: any) =>{
+                          return false;
+                  });
+
+}
+
+
+huella(){
+
+this._huellas.LeerHuella()
+.then((result: any) => {
+
+  this.showPrompt();
+
+}).catch((error: any) =>{
+      return false;
+});
 
 }
 
@@ -59,7 +79,8 @@ showPrompt() {
       {
         text: 'Buscar',
         handler: data => {
-            this.navCtrl.push(PlacaPage,data);
+
+          this.navCtrl.push(PlacaPage,{'placa':data});
         }
       }
     ]

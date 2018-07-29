@@ -16,18 +16,8 @@ export class NoticiasProvider {
 
   CargarNoticias(){
 
+    return this.http.get("http://178.128.67.94/api/rss");
   
-  let promesa = new Promise((resolve,reject)=>{
-
-     this.http.get("https://jsonplaceholder.typicode.com/posts")
-              .subscribe((data:any)=>{ 
-                  this.noticias=data;
-                  resolve();
-              })
-
-  });
-
-  return promesa;
 
 }
 

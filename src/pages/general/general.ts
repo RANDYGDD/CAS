@@ -1,8 +1,10 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { general } from './general';
 import { NotePadProvider } from './../../providers/note-pad/note-pad';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { SelectUbicacionPage } from './../select-ubicacion/select-ubicacion';
+
 
 @Component({
   selector: 'page-general',
@@ -25,7 +27,8 @@ general:general;
   constructor(public modalCtrl:ModalController,
               public _notepad:NotePadProvider,
               public navParams:NavParams,
-              public navCtrl:NavController
+              public navCtrl:NavController,
+              public _huellas:HuellasProvider
   ) {
 
     if( this.navParams.get("id") != undefined ){
@@ -84,6 +87,21 @@ general:general;
    }
 
 
+
+   huella(){
+
+    this._huellas.LeerHuella()
+    .then((result: any) => {
+ 
+         this.enviar();
+           
+   }).catch((error: any) =>{
+           return false;
+   });
+ 
+   }
+
+
    enviar(){
 
       if( this.cordenadas.length == 0 || this.fecha.length ==0 || this.tiempo.length ==0 ||
@@ -124,7 +142,7 @@ general:general;
   
           this._notepad.CargarStorage(); 
           this._notepad.guardar("general",this.general);
-          
+          this.limpiar();
           loading.dismiss();
   
         }
@@ -133,6 +151,17 @@ general:general;
       }
 
      
+   }
+
+
+   limpiar(){
+
+    this.fecha="";
+    this.tiempo="";
+    this.detalle="";
+    this.lat="";
+    this.lng="";
+
    }
 
 

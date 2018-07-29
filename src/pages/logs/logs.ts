@@ -1,3 +1,4 @@
+import { HuellasProvider } from './../../providers/huellas/huellas';
 import { NotasPage } from './../notas/notas';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
@@ -11,16 +12,27 @@ export class LogsPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public alertCtrl:AlertController,
-              public modalCtrl:ModalController
+              public modalCtrl:ModalController,
+              public _huellas:HuellasProvider
             ) {
   }
 
 
   notas(tipo:string){
 
-    this.modalCtrl.create(NotasPage,{data:tipo}).present();
+  this._huellas.LeerHuella()
+    .then((result: any) => {
+
+      this.modalCtrl.create(NotasPage,{data:tipo}).present();
+      
+   }).catch((error: any) =>{
+           return false;
+   });
+
 
   }
+
+
 
   
   eliminar(){

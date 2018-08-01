@@ -11,21 +11,17 @@
 
 <ion-content padding>
 
-  <ion-searchbar
-    [(ngModel)]="myInput"
-    (ionInput)="onInput($event)"
-    >
-  </ion-searchbar>
-
-    <ion-list>
+    <ion-list *ngFor="let desc of info; let i=index">
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="http://via.placeholder.com/350x150">
+            <img [src]="  info[i].id | imagen">
           </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
+          <p>   {{  info[i].person.nombres }} {{ info[i].person.apellidos  }} </p>
+          <span>{{ info[i].person.cedula }}</span>
+          <p>{{ info[i].titular }}</p>
+          <p>•{{ info[i].created_at }}</p>
           <button ion-button clear item-end
-            (click)="detalle()"
+            (click)="detalle(info[i])"
           >Ver</button>
         </ion-item>
       </ion-list>

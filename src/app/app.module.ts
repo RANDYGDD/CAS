@@ -74,6 +74,7 @@ import { SelectUbicacionPage } from './../pages/select-ubicacion/select-ubicacio
 import { NotePadProvider } from '../providers/note-pad/note-pad';
 import { NotasPage } from '../pages/notas/notas';
 import { NotaUbicacionPage } from './../pages/nota-ubicacion/nota-ubicacion';
+import { ImagenPipe } from '../pipes/imagen/imagen';
 
 
 
@@ -105,7 +106,8 @@ import { NotaUbicacionPage } from './../pages/nota-ubicacion/nota-ubicacion';
     GeneralPage,
     SelectUbicacionPage,
     NotasPage,
-    NotaUbicacionPage
+    NotaUbicacionPage,
+    ImagenPipe
     
   ],
   imports: [

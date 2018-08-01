@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { ConsultalProvider } from '../../providers/consultal/consultal';
+
 
 
 @Component({
@@ -10,11 +11,15 @@ import { ConsultalProvider } from '../../providers/consultal/consultal';
 export class PlacaPage {
 
    vehiculo:any="";
+   propietario:any={};
    placa:any;
+   anterior:any;
+   accidente:any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public _placa:ConsultalProvider
+              public _placa:ConsultalProvider,
+              public alertCtrl:AlertController,
             ) {
 
                this.placa= this.navParams.get('placa');
@@ -40,7 +45,12 @@ export class PlacaPage {
 
           }else{
             this.vehiculo=data.data.vehicle;
-            console.log(this.vehiculo);
+            this.propietario=data.data.vehicle.person;
+            this.anterior=data.data.propietario_anterior;
+            
+            this.accidente=this.propietario=data.data.vehicle.vehicle_accidents.length;
+
+
           }
           
       },
@@ -53,6 +63,7 @@ export class PlacaPage {
   )
        
   }
+
 
 
 

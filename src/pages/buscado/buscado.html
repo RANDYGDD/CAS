@@ -21,4 +21,50 @@
 
 <ion-content padding>
 
+          <ion-grid>
+
+          <ion-row>
+            <ion-col col-8 push-4>
+                <ion-img width="100" height="100" [src]="info.id | imagen"></ion-img>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+
+      
+              <ion-col col-8 push-4>
+                  <label for="">Titular</label>
+                  <p>{{ info.titular }}</p>
+                </ion-col>
+              </ion-row>      
+      
+              <ion-row>
+              <ion-col col-8 push-4>
+                  <label for="">Descripcion</label>
+                  <p>{{  info.descripcion }}</p>
+                </ion-col>
+              </ion-row> 
+      
+              <ion-row>
+             <ion-col col-8 push-4>
+               <label for="">Desde:</label>
+               <h5>{{info.created_at}}</h5>
+             </ion-col>
+            </ion-row> 
+        </ion-grid>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">Datos generales</ion-item-divider>
+            <ion-item>Cédula: <strong> {{ person.cedula }}</strong></ion-item>
+            <ion-item>Nombres: <strong> {{ person.nombres }}</strong></ion-item>
+            <ion-item>Apellidos: <strong>{{ person.apellidos}}</strong></ion-item>
+            <ion-item>Residencia<p>{{ person.residencia}}</p></ion-item>
+            <ion-item>Alias:<strong>{{ person.alias}}</strong></ion-item>
+            <ion-item>Fecha Nacimiento: <strong>{{ person.fecha_nac}}</strong></ion-item>
+            <ion-item>Nacionalidad: <strong>{{ person.nacionalidad}}</strong></ion-item>
+            <ion-item>Sexo: <strong>{{ person.sexo}}</strong></ion-item>
+            <ion-item>Estado Civil: <strong>{{ person.estado_civil}}</strong></ion-item>
+          </ion-item-group>
+    
+
 </ion-content>

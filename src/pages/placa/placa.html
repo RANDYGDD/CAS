@@ -21,41 +21,65 @@
 
     <ion-row>
 
-      <ion-col col-10 push-2>
+      <ion-col col-8 push-4>
           <label for="">Placa</label>
           <h5>{{ vehiculo.numero_placa  }}</h5>
         </ion-col>
 
 
-      <ion-col col-10 push-2>
+      <ion-col col-8 push-4>
           <label for="">Color</label>
           <h5 [ngStyle]="{'background-color': vehiculo.color}">Muestra</h5>
-          <h5 *ngIf="vehiculo.color=='white' ">Blanco</h5>
+           <span *ngIf="vehiculo.color=='white' ">Blanco</span>
         </ion-col>
 
 
-     <ion-col col-10 push-2>
+     <ion-col col-8 push-4>
        <label for="">Marca</label>
        <h5>{{ vehiculo.marca  }}</h5>
      </ion-col>
 
-     <ion-col col-10 push-2>
+     <ion-col col-8 push-4>
         <label for="">Modelo</label>
         <h5>{{ vehiculo.modelo }}</h5>
       </ion-col>
 
 
-      <ion-col col-10 push-2>
+      <ion-col col-8 push-4>
         <label for="">Año</label>
         <h5>{{ vehiculo.year_fabricacion }}</h5>
       </ion-col>
 
-      <ion-col col-10 push-2>
+      <ion-col col-8 push-4>
         <label for="">Estatus</label>
         <h5>{{ vehiculo.status }}</h5>
       </ion-col>
   </ion-row>
 
   </ion-grid>
+  
+      <ion-item-group>
+        <ion-item-divider color="primary">Propietario</ion-item-divider>
+        <ion-item>Cédula: <strong> {{ propietario.cedula }}</strong></ion-item>
+        <ion-item>Nombres: <strong> {{ propietario.nombres }}</strong></ion-item>
+        <ion-item>Apellidos: <strong>{{ propietario.apellidos}}</strong></ion-item>
+        <ion-item>Fecha Nacimiento: <strong>{{ propietario.fecha_nac}}</strong></ion-item>
+        <ion-item>Nacionalidad: <strong>{{ propietario.nacionalidad}}</strong></ion-item>
+      </ion-item-group>
+
+      <br> <br>
+      <button  ion-button block color="secondary" *ngIf="anterior"
+      >El Vehículo ha tenido propietario anterior</button>
+
+      <button  ion-button block color="barra" *ngIf="!anterior"
+      >El Vehículo NO ha tenido propietario anterior</button>
+
+      <br> <br>
+      <button  ion-button block color="danger" *ngIf="accidente != 0"
+      >El Vehículo ha tenido  {{ accidente }} Accidente/s </button>
+
+      <button  ion-button block color="barra" *ngIf="accidente==0"
+      >El Vehículo NO ha tenido accidentes</button>
+
 
 </ion-content>

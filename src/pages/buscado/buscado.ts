@@ -8,6 +8,10 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class BuscadoPage {
 
+  info2:any={};
+  info:any={};
+  person:any={};
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public viewCtrl:ViewController
@@ -15,7 +19,11 @@ export class BuscadoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscadoPage');
+   
+     this.info2=this.viewCtrl.data;
+
+     this.info=this.info2.info;
+     this .person=this.info.person;
   }
 
   cerrar(){

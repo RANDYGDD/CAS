@@ -68,7 +68,7 @@ export class ConsultarPage {
                  this._perfiles.Mensaje(data.data.message);
 
             }else{
-              this.navCtrl.push(PersonaPage,{'perfil':data}); 
+                this.navCtrl.push(PersonaPage,{'perfil':data}); 
             }
 
          

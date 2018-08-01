@@ -19,7 +19,10 @@ export class PersonaPage {
 
        this.perfil=this.navParams.get('perfil')
 
-       this.persona=this.perfil.data.persona
+      
+       this.persona=this.perfil.data.person;
+
+       console.log(this.persona);
          
        if(this.perfil.data.ultima_condena){
           this.crimen=1;

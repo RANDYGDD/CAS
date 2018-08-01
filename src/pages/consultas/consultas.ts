@@ -35,10 +35,12 @@ perfil() {
 
 graficos(){
 
+  this.navCtrl.push(GraficosPage);
+
+
   this._huellas.LeerHuella().then((result: any) => {
 
-                      this.navCtrl.push(GraficosPage);
-
+                      
                   }).catch((error: any) =>{
                           return false;
                   });

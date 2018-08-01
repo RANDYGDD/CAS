@@ -10,6 +10,17 @@
 
 
 <ion-content padding>
+
+    <div style="display: block">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+
     <div>
         <div style="display: block">
           <canvas baseChart
@@ -21,7 +32,7 @@
                   (chartHover)="chartHovered($event)"
                   (chartClick)="chartClicked($event)"></canvas>
         </div>
-        <button (click)="randomize()">Update</button>
+        
       </div>
 
 
@@ -35,13 +46,5 @@
         </div>
 
 
-        <div style="display: block">
-            <canvas baseChart
-                    [data]="pieChartData"
-                    [labels]="pieChartLabels"
-                    [chartType]="pieChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-          </div>
 
 </ion-content>

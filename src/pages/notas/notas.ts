@@ -54,7 +54,6 @@ export class NotasPage {
           text: 'Editar',
           handler: () => {
  
-            console.log(this.tipo);
              switch(this.tipo){
 
                     case "crimen":

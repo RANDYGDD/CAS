@@ -20,21 +20,29 @@ export class UsuarioProvider {
   }
 
 
-  verificarUsuario(clave:string){
+  verificarUsuario(clave:string, contrasena:string){
 
     clave= clave.toLocaleLowerCase();
-
     return new Promise( (resolve,reject) =>{
       
      this.doc= this.afDB.doc(`/usuarios/${ clave }`)
-          .valueChanges().subscribe(data=>{
-               if(data){
-                 //correcto
+          .valueChanges().subscribe((data:any)=>{
+               
+             if(data){
+              
+                if(data.password == contrasena){
+
+                       
                  this.clave = clave;
                  this.user = data;
 
                  this.guardarStorage();
                  resolve(true);
+
+                }else{
+                  resolve(false);
+                } 
+           
                }else{
                  resolve(false);
                  //incorrecto

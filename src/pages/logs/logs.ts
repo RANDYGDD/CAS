@@ -20,14 +20,16 @@ export class LogsPage {
 
   notas(tipo:string){
 
-  this._huellas.LeerHuella()
-    .then((result: any) => {
+    this.modalCtrl.create(NotasPage,{data:tipo}).present();
 
-      this.modalCtrl.create(NotasPage,{data:tipo}).present();
+  // this._huellas.LeerHuella()
+  //   .then((result: any) => {
+
+     
       
-   }).catch((error: any) =>{
-           return false;
-   });
+  //  }).catch((error: any) =>{
+  //          return false;
+  //  });
 
 
   }

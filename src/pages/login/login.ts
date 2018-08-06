@@ -11,6 +11,7 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginPage {
 
   private clave:string;
+  private contrasena:string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -23,8 +24,6 @@ export class LoginPage {
   }
 
   ngOnInit(){
-
-    
 
   }
 
@@ -44,7 +43,7 @@ export class LoginPage {
   }
 
 
-private validarUsuario(clave:string){
+private validarUsuario(clave:string,contrasena:string){
 
   let loading =  this.loadingCrtl.create({
          content:'Verificando'
@@ -52,7 +51,7 @@ private validarUsuario(clave:string){
 
   loading.present();
 
-  this._usuarioProf.verificarUsuario( clave )
+  this._usuarioProf.verificarUsuario( clave,contrasena )
       .then(existe =>{
 
          loading.dismiss();
@@ -76,7 +75,7 @@ private validarUsuario(clave:string){
 
 
 ingresar(){
-     this.validarUsuario(this.clave);
+     this.validarUsuario(this.clave,this.contrasena);
 }
 
 

@@ -120,10 +120,10 @@ import { ImagenPipe } from '../pipes/imagen/imagen';
     AngularFireModule.initializeApp(firebaseConf),
     AngularFirestoreModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyA6IlWuVpuKb5KT81_hut-1rlIJ7U29rGI'
+      apiKey:'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8' 
     }),
     ChartsModule
-    //'AIzaSyDKlahhqLC1v6mBQPh6scKeUfK_TFn7HR8'
+    //'AIzaSyA6IlWuVpuKb5KT81_hut-1rlIJ7U29rGI'
   ],
   bootstrap: [IonicApp],
   entryComponents: [

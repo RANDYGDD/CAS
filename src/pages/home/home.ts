@@ -70,11 +70,5 @@ perfil() {
   }
 
 
-  doRefresh(refresher:Refresher) {
-
-     
- 
-  }
-
 
 }

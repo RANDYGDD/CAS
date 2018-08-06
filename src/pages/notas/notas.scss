@@ -1,13 +1,18 @@
 page-notas {
 
+    ion-card{
+        background-color: rgba(245, 239, 239, 0.774) !important;
+    }
+
     .header{
-        font-size: 30px;
+        font-size: 100%;
         color:rgb(243, 69, 69);
+        font-style: italic;
        
     }
 
     .tiempo{
-        font-size: 15px;
+        font-size: 80%;
         color:green;
     }
 

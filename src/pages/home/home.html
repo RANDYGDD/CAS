@@ -14,12 +14,6 @@
 
 <ion-content padding>
 
-
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-
-
     <ion-card 
          *ngFor="let noticia of noticias"
          (click)="MostrarNoticias(noticia)"

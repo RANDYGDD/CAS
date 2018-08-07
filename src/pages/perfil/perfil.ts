@@ -4,26 +4,31 @@ import { ViewController, NavController } from 'ionic-angular';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { LoginPage } from '../login/login';
 
-
-
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
 
+
+
   constructor(public viewCtrl:ViewController,
               public navCtrl:NavController,
-              private usuario:UsuarioProvider,
-              private ubicacion:UbicacionProvider
+              private ubicacion:UbicacionProvider,
+              public usuario:UsuarioProvider,
 
   ) {
+
+    this.usuario.CargarStorage();
+  
   }
 
 
   cerrar(){
       this.viewCtrl.dismiss();
   }
+
+
 
 
   salir(){

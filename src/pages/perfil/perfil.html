@@ -31,15 +31,21 @@
         <ion-row>
     
           <ion-col col-10 push-2>
-              <label for="">Nombres</label>
-              <h1>............</h1>
+              <label for="">Oficial</label>
+              <h5>{{usuario.user.nombre}}</h5>
             </ion-col>
     
     
           <ion-col col-10 push-2>
-              <label for="">Apellidos</label>
-              <h5></h5>
+              <label for="">Usuario</label>
+              <h5>{{usuario.user.clave}}</h5>
             </ion-col>
+
+            <ion-col col-10 push-2>
+              <label for="">Unidad</label>
+              <h5>{{usuario.user.unidad}}</h5>
+            </ion-col>
+
       </ion-row>
     
       </ion-grid>

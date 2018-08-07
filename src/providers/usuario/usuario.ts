@@ -57,11 +57,14 @@ export class UsuarioProvider {
 
     if(this.platform.is('cordava')){
              //Celular
-            this.storage.set('clave',this.clave);         
+            this.storage.set('clave',this.clave);  
+            this.storage.set('usuario',this.user);    
 
     }else{
         //Escritorio
         localStorage.setItem('clave',this.clave);
+        localStorage.setItem('usuario',JSON.stringify(this.user));
+      
 
     }
 
@@ -86,7 +89,16 @@ export class UsuarioProvider {
 
         });
 
-       this.storage.set('clave',this.clave);         
+        this.storage.get('usuario').then(val=>{
+
+          if(val){
+            this.user=val;
+            resolve(true);
+          }else{
+            resolve(false);
+          }
+
+        });      
 
       }else{
         //Escritorio
@@ -97,6 +109,13 @@ export class UsuarioProvider {
            resolve(false);
          }
 
+         if(localStorage.getItem('usuario')){
+          this.user=JSON.parse(localStorage.getItem('usuario'));
+          resolve(true);
+        }else{
+          resolve(false);
+        }
+
     }
 
     })
@@ -104,9 +123,8 @@ export class UsuarioProvider {
   }
 
 
-  borrarUsuario(){
+borrarUsuario(){
     this.clave=null;
-
 
   if(this.platform.is('cordava')){
       //Celular
@@ -117,8 +135,6 @@ export class UsuarioProvider {
  localStorage.removeItem("clave");
 
 }
-
-  this.doc.unsubscribe();
 
 
   }

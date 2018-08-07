@@ -39,7 +39,7 @@ export class NotasPage {
  public accion(id:number,lat:number,lng:number) {
 
 
-  console.log(lat +" "+ lng)
+
 
     const actionSheet = this.actionSheetCtrl.create({
       title: 'Acción sobre la Nota',

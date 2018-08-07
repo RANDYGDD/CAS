@@ -22,7 +22,6 @@ export class PersonaPage {
       
        this.persona=this.perfil.data.person;
 
-       console.log(this.persona);
          
        if(this.perfil.data.ultima_condena){
           this.crimen=1;

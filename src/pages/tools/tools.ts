@@ -84,6 +84,9 @@ apoyo(){
                 })
          }else{
                  this.ayuda.PedirAyuda(data);
+                 this.callNumber.callNumber("111111", true)
+                 .then(res => console.log('Launched dialer!', res))
+                .catch(err => console.log('Error launching dialer', err));
          }
       }
 

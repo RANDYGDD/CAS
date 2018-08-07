@@ -14,9 +14,7 @@ export class LocalPage {
             ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LocalPage');
-  }
+
 
   eliminar(){
 
@@ -28,13 +26,13 @@ export class LocalPage {
             text: 'Cancelar',
             role: 'cancel',
             handler: () => {
-              console.log('Cancelado');
+             
             }
           },
           {
             text: 'Eliminar',
             handler: () => {
-              console.log('Articulo eliminado');
+            
             }
           }
         ]
@@ -54,13 +52,13 @@ export class LocalPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancelado');
+           
           }
         },
         {
           text: 'Enviar',
           handler: () => {
-            console.log('Articulo eliminado');
+            
           }
         }
       ]

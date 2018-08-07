@@ -40,7 +40,6 @@ export class SelectUbicacionPage {
   guardar(){
     
     this.viewCtrl.dismiss({lat:this.lat,lng:this.lng});
-    console.log(this.lat);
 
   }
 

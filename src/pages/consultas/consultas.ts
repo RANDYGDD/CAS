@@ -76,7 +76,6 @@ showPrompt() {
       {
         text: 'Cancelar',
         handler: data => {
-          console.log('Cancel clicked');
         }
       },
       {

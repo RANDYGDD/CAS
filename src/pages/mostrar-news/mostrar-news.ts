@@ -13,7 +13,7 @@ export class MostrarNewsPage {
 
     this.news=this.navParams.data;
 
-    console.log(this.news);
+  
 
   }
 

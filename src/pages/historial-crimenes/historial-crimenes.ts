@@ -19,7 +19,6 @@ export class HistorialCrimenesPage {
             ) {
 
              this.perfil=this.viewCtrl.data;
-             console.log(this.perfil.perfil);
              this.ultima_condena=this.perfil.perfil.data.ultima_condena;
              this.prision=this.perfil.perfil.data.prision;
   }

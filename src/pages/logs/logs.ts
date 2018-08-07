@@ -46,13 +46,13 @@ export class LogsPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancelado');
+            
           }
         },
         {
           text: 'Eliminar',
           handler: () => {
-            console.log('Articulo eliminado');
+           
           }
         }
       ]

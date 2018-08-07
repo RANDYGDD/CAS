@@ -26,8 +26,6 @@ EstatusNetwork(){
 Status(){
      this.red=this.network.type;
 
-     console.log(this.red);
-
      return this.red;
 }
   

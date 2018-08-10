@@ -18,7 +18,7 @@
          *ngFor="let noticia of noticias"
          (click)="MostrarNoticias(noticia)"
     >
-        <img height="150" src="assets/imgs/flag.png"/>
+        <img height="150" [src]="noticia.img | img"/>
         <ion-card-content>
           <ion-card-title>
                 {{ noticia.titular  }}

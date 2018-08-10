@@ -12,8 +12,7 @@ export class MostrarNewsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.news=this.navParams.data;
-
-  
+    
 
   }
 

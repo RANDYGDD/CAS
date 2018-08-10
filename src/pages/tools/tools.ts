@@ -11,6 +11,7 @@ import { CallNumber } from '@ionic-native/call-number';
 
 
 
+
 @Component({
   selector: 'page-tools',
   templateUrl: 'tools.html',
@@ -73,7 +74,15 @@ apoyo(){
     alert.addButton({
       text: 'Solicitar Apoyo',
       handler: data => {
+
+        let loading = this.loadingCtrl.create({
+          content: 'Cargando....'
+        });
+
+        loading.present();
+
          if(this.red.Status()=="none"){
+                  loading.dismiss();
                   this.callNumber.callNumber("111111", true)
                  .then(res => console.log('Launched dialer!', res))
                 .catch(err => console.log('Error launching dialer', err));
@@ -84,6 +93,7 @@ apoyo(){
                 })
          }else{
                  this.ayuda.PedirAyuda(data);
+                 loading.dismiss();
                  this.callNumber.callNumber("111111", true)
                  .then(res => console.log('Launched dialer!', res))
                 .catch(err => console.log('Error launching dialer', err));

@@ -2,9 +2,10 @@ import { HuellasProvider } from './../../providers/huellas/huellas';
 import { PersonaPage } from './../persona/persona';
 import { ConsultalProvider } from './../../providers/consultal/consultal';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
-import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 
 @Component({
   selector: 'page-consultar',
@@ -20,7 +21,8 @@ export class ConsultarPage {
               public toast: Toast,
               public _perfiles:ConsultalProvider,
               private barcodeScanner: BarcodeScanner,
-              public _huellas:HuellasProvider
+              public _huellas:HuellasProvider,
+              public loadingCtrl:LoadingController
                 
             ) {
   }
@@ -53,21 +55,29 @@ export class ConsultarPage {
 
   consultar_perfil(){
 
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando....'
+    });
+
     if(this.cedula.length != 11){
 
          this._perfiles.Ivalidos();
 
     }else{
 
+        loading.present();
+
       this._perfiles.ConsultarPerfil(this.cedula).subscribe(
 
         (data:any)=>{
           
             if(data.data.message){
-                
+
+                 loading.dismiss();  
                  this._perfiles.Mensaje(data.data.message);
 
             }else{
+                loading.dismiss();
                 this.navCtrl.push(PersonaPage,{'perfil':data}); 
             }
 
@@ -75,7 +85,7 @@ export class ConsultarPage {
         },
 
         (error)=>{
-
+                 loading.dismiss();
         }
 )
 

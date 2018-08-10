@@ -28,7 +28,6 @@ export class HomePage {
   {
 
     
-    this._red.EstatusNetwork();
     this.Noticias();
 
 

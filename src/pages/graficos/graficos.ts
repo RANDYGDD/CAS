@@ -1,6 +1,6 @@
 import { ConsultalProvider } from './../../providers/consultal/consultal';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 
 @Component({
@@ -38,9 +38,16 @@ export class GraficosPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public _estadisticas:ConsultalProvider
+              public _estadisticas:ConsultalProvider,
+              public loadingCtrl:LoadingController
             ) {
 
+
+            let loading = this.loadingCtrl.create({
+                content: 'Cargando....'
+              });
+
+              loading.present();
 
             this._estadisticas.Estadisticas().subscribe(
               
@@ -50,9 +57,13 @@ export class GraficosPage {
                 //console.log(data.data.data_crimen);
                 //this.pieChartLabels=data.data.label_crimen;
                 this.pieChartData=data.data.data_crimen;
+
+                loading.dismiss();
             },
           
             (error)=>{
+
+                loading.dismiss();
 
             }
 
